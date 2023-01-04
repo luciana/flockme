@@ -1,38 +1,26 @@
-import React, { useState } from 'react';
-import ItemForm from './ItemForm';
+import React from 'react';
 import { TiThumbsUp, TiThumbsDown} from 'react-icons/ti';
 
 const Vote = ({ items, voteUp, voteDown }) => {
-  const [edit, setEdit] = useState({
-    id: null,
-    value: ''
-  });
 
-  const submitVoteUp = value => {
-    voteUp(edit.id, value);
-    setEdit({
-      id: null,
-      value: ''
-    });
-  };
 
-  return items.map((todo, index) => (
+  return items.map((item, index) => (
    <>
     <div
-      className={todo.isComplete ? 'todo-row complete' : 'todo-row'}
+      className={item.isComplete ? 'todo-row complete' : 'todo-row'}
       key={index}
     >
-      <div key={todo.id} onClick={() => voteUp(todo.id)}>
-        <span className="badge rounded-pill bg-light text-dark mx-2 ">4</span> 
-        {todo.text}
+      <div key={item.id} onClick={() => voteUp(item.id)}>
+        <span className="badge rounded-pill bg-light text-dark mx-2 ">{item.votes}</span> 
+        {item.text}
       </div>
       <div className='icons'>
         <TiThumbsUp
-          onClick={() => voteUp(todo.id)}
+          onClick={() => voteUp(item.id)}
           className='mx-5'
         />
         <TiThumbsDown
-          onClick={() => voteDown(todo.id)}
+          onClick={() => voteDown(item.id)}
           className='mx-3'
         />
       </div>

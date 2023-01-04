@@ -3,27 +3,12 @@ import ItemForm from './ItemForm';
 import Item from './Item';
 import QuestionForm from './QuestionForm';
 import Question from './Question';
-import Vote from './Vote';
+
 
 const TAG = "#flocks";
 
 function ItemList() {
   const [todos, setTodos] = useState([]);
-  const [items, setItems] = useState(    [
-    {
-        "id": 1171,
-        "text": "Bike"
-    },
-    {
-        "id": 3411,
-        "text": "Elliptical"
-    },
-    {
-        "id": 8952,
-        "text": "Rower"
-    }
-]);
-  const [votes, setVotes] = useState([]);
   const [question, setQuestion] = useState([]);
   const [isActive, setActive] = useState(false);
   
@@ -158,7 +143,7 @@ function ItemList() {
        <ItemForm onSubmit={addTodo} />
 
 
-       <h5 className={isActive ? 'd-block': 'd-block'}>Voting Panel</h5>  
+   
        <Vote
         items={items}
         voteUp={completeTodo}

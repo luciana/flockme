@@ -28,11 +28,11 @@
     outline: none;
     width: 320px;
     background: transparent;
-    color: #fff;
+    color: rgb(7, 6, 6);
   }
   
   .todo-input::placeholder {
-    color: #e2e2e2;
+    color: #141414;
   }
   
   .todo-button {

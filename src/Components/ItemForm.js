@@ -48,14 +48,10 @@ function ItemForm(props) {
           />
           <button onClick={handleSubmit} className='todo-button'>
            Add Option
-          </button>
-        </>
+          </button>          
+       </>
       )}
-       <>         
-          <button onClick={handleSubmit} className='btn btn-success btn-lg my-3'>
-           Publish Question & Poll
-          </button>
-        </>
+      
     </form>
   );
 }

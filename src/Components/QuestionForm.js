@@ -18,7 +18,7 @@ const QuestionForm = (props ) => {
       id: Math.floor(Math.random() * 10000),
       text: input
     });
-    setInput('');
+   // setInput('');
   };
 
   return (
@@ -35,7 +35,7 @@ const QuestionForm = (props ) => {
             ref={inputRef}
             className='edit form-control'
           />
-          <button onClick={handleSubmit} className='btn-lg btn btn-light my-3 edit'>
+          <button onClick={handleSubmit} className='btn-lg btn btn-warning my-3 edit'>
             Update
           </button>
         </>
@@ -50,7 +50,7 @@ const QuestionForm = (props ) => {
             className='form-control '
             ref={inputRef}
           />
-          <button onClick={handleSubmit} className='btn-lg btn btn-light my-3'>
+          <button onClick={handleSubmit} className='btn-lg btn btn-warning my-3'>
            Ask Question
           </button>
         </>
