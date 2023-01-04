@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/items/{itemID}": {
+      "name": "/items/{itemID}",
+      "lambdaFunction": "ItemHandler",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
