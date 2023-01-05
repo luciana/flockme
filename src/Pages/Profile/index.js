@@ -10,6 +10,7 @@ import SideNav from '../../Components/SideNav';
 import { FaRegHandPaper, FaBuffer } from 'react-icons/fa';
 
 
+
 const TAG = "#flocks";
 
 function Profile() {
@@ -144,7 +145,13 @@ function Profile() {
                     </button>
                 </div>
             </section>
-            <hr className="m-0"></hr>            
+            <hr className="m-0"></hr>  
+            <section className="resume-section" id="stats">
+                <div className="resume-section-content">
+                 
+                  
+                </div>
+            </section>          
         </div>
     </div>
   );

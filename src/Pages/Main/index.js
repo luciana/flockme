@@ -4,6 +4,7 @@ import '../profile-nav.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Vote from '../../Components/Vote';
 import SideNav from '../../Components/SideNav';
+import { FaCircleNotch , FaCircle} from 'react-icons/fa';
 
 function Main() {
   const [items, setItems] = useState(    [
@@ -64,39 +65,63 @@ function Main() {
       <div className="container-fluid p-0">
         <section className="resume-section">
           <div className="resume-section-content">
-            <h1 className="text-dark">Have an opnion? </h1>
+            <h1 className="text-dark">Have an opinion? </h1>
             <h5 className="text-dark">Help others make a decision. Vote on their questions</h5>
              
 
               <div className="my-5 row"> 
-                <div className="col-6 border border-2 p-3 d-flex align-items-start flex-column">           
+                <div className="col border border-2 p-3 d-flex align-items-start flex-column">           
                   <div className="mb-auto p-2"> I’d like to purchase a cardio equipment for my gym. Right now I have a blowflex, and some free weights. Which cardio machine should I get? Bike, Elliptical, Rower?  </div>
                   <div className="px-2 py-4">
                     <p className="fw-light">By Luciana B on Jan 4th, 2023</p>
+                   
                   </div>
-                </div>     
-                <div className="col-6 ">
+               
                   <Vote
                     items={items}
                     voteUp={voteUp}
                     voteDown={voteDown}
                   />
+                   <p > Voting closed <FaCircle /> </p>
+
+                   <blockquote className="blocquote"> 
+                        I did it. I followed your advice and did 30 minutes of the Elliptical. It was the best choice followed by 15min of weights. I feel like a million $$$
+                        <p><FaCircle color="green"/> POSITIVE </p>
+                   </blockquote>
                 </div>
               </div> 
               <hr className="m-0" />
               <div className="my-5 row"> 
-                <div className="col-6 border border-2 p-3 d-flex align-items-start flex-column">           
+                <div className="col border border-2 p-3 d-flex align-items-start flex-column">           
                   <div className="mb-auto p-2"> Just met this guy, he is so nice. He surprised me with tickets to the Cavs vs Lakers game. We live in Cleveland, Ohio so I think he is assuming I am a Cavs fan; however, I am a huge Lakers fan. Should I wear the Lakers jersey to the game or should I just go neutral - no team jersey? </div>
                   <div className="px-2 py-4">
                     <p className="fw-light">By Mary Hoppkins on Jan 8th, 2023</p>
+                   
                   </div>
-                </div>     
-                <div className="col-6 ">
+               
                   <Vote
                     items={items2}
                     voteUp={voteUp}
                     voteDown={voteDown}
                   />
+                   <p > Voting Open < FaCircleNotch /> </p>
+                </div>
+              </div> 
+              <hr className="m-0" />
+              <div className="my-5 row"> 
+                <div className="col border border-2 p-3 d-flex align-items-start flex-column">           
+                  <div className="mb-auto p-2"> Just met this guy, he is so nice. He surprised me with tickets to the Cavs vs Lakers game. We live in Cleveland, Ohio so I think he is assuming I am a Cavs fan; however, I am a huge Lakers fan. Should I wear the Lakers jersey to the game or should I just go neutral - no team jersey? </div>
+                  <div className="px-2 py-4">
+                    <p className="fw-light">By Mary Hoppkins on Jan 8th, 2023</p>
+                   
+                  </div>
+                
+                  <Vote
+                    items={items2}
+                    voteUp={voteUp}
+                    voteDown={voteDown}
+                  />
+                   <p > Voting Open < FaCircleNotch /> </p>
                 </div>
               </div> 
           </div>          
