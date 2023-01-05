@@ -39,7 +39,7 @@ function ItemForm(props) {
       ) : (
         <>
           <input
-            placeholder='Add another option'
+            placeholder='Add an option to your poll'
             value={input}
             onChange={handleChange}
             name='text'

@@ -23,7 +23,7 @@ const QuestionForm = (props ) => {
 
   return (
     <form onSubmit={handleSubmit} className='todo-form'>
-    <div className="p-4">
+    <div >
       {props.edit ? (
         <>
           <textarea
@@ -35,14 +35,14 @@ const QuestionForm = (props ) => {
             ref={inputRef}
             className='edit form-control'
           />
-          <button onClick={handleSubmit} className='btn-lg btn btn-warning my-3 edit'>
+          <button onClick={handleSubmit} className='btn-lg btn btn-dark my-3 edit'>
             Update
           </button>
         </>
       ) : (
         <>
           <textarea
-            placeholder='Type your question'
+            placeholder='i.e What should I eat today? #flocks pizza, pasta, salad'
             value={input}
             onChange={handleChange}
             name='textarea'
@@ -50,15 +50,11 @@ const QuestionForm = (props ) => {
             className='form-control '
             ref={inputRef}
           />
-          <button onClick={handleSubmit} className='btn-lg btn btn-warning my-3'>
+          <button onClick={handleSubmit} className='btn-lg btn btn-dark my-3'>
            Ask Question
           </button>
         </>
       )}
-     
-      <div className="text-muted fs-6 fw-light">
-        Type in your question. For the poll options prefix it with # flocks and it will automatically setup your poll.
-      </div>
       </div>
     </form>
   );

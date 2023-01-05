@@ -1,13 +1,13 @@
 @charset "UTF-8";
 
 
-.profile {
+.profile, .main {
   padding-top: 3.375rem;
   color: #6c757d;
 }
 
 @media (min-width: 992px) {
-  .profile {
+  .profile, .main {
     padding-top: 0;
     padding-left: 17rem;
   }

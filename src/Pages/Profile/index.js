@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
-import { FaKiss } from "react-icons/fa";
 import '../../Components/Item.css';
 import './../pages.css';
-import './profile-nav.css';
+import './../profile-nav.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemForm from '../../Components/ItemForm';
 import Item from '../../Components/Item';
 import QuestionForm from '../../Components/QuestionForm';
+import SideNav from '../../Components/SideNav';
+import { FaRegHandPaper, FaBuffer } from 'react-icons/fa';
 
 
 const TAG = "#flocks";
@@ -41,26 +42,12 @@ function Profile() {
 
     //user used comma as a delimiter
     let foundComma = list.indexOf(',');
-    console.log("foundComma", foundComma);
 
-    //user used OR as a delimiter
-    let foundOR = list.indexOf('or');
-    console.log("foundOR", foundOR);
-
-    let indexComma =[];
+    let index =[];
     if (foundComma >0){
-      indexComma = list.split(',');
+      index = list.split(',');
     }
     
-    let indexOr = [];
-    if (foundOR >0 ){
-      indexOr = list.split('or');
-    }
-  
-    console.log("indexComma after flocks", indexComma);
-    console.log("indexOr after flocks", indexOr);
-
-    const index = [...indexComma, ...indexOr];
     console.log("index after flocks", index);
 
     if (typeof index === "undefined" && index === null && index.length == null && index.length === 0) {
@@ -121,52 +108,43 @@ function Profile() {
     console.log('publish question');
   }
   return (
-    <div className="App profile">
-       <nav className="navbar navbar-expand-lg navbar-dark bg-warning fixed-top" id="sideNav">
-            <a className="navbar-brand js-scroll-trigger" href="#page-top">
-                <span className="d-block d-lg-none">Luciana Bruscino @ FlockMe</span>
-                <span className="d-none d-lg-block">
-                    <FaKiss  alt="Luciana Bruscino"/>
-                </span>
-            </a>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
-            <div className="collapse navbar-collapse" id="navbarResponsive">
-                <ul className="navbar-nav">
-                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/">Home</a></li>                    
-                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#question-form">New Question</a></li>
-                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#question-poll">Question Poll</a></li>
-                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="#questions">All Questions</a></li>                   
-                </ul>
-            </div>
-        </nav>
+    <div className="App profile container">
+        <SideNav name="Luciana Bruscino" />
         <div className="container-fluid p-0">
             <section className="resume-section" id="question-form">
                 <div className="resume-section-content">
-                  <div className="subheading">How can we help you ?</div>
-                  <QuestionForm        
-                    onSubmit={addQuestion}/>
-                  <div className="d-block subheading">Setup your poll</div>
-                  <Item
-                    todos={todos}
-                    completeTodo={completeTodo}
-                    removeTodo={removeTodo}
-                    updateTodo={updateTodo}
-                  />
-                  <ItemForm onSubmit={addTodo} />
-
-                  <button onClick={handlePublishQuestion} className='btn btn-success btn-lg my-3'>
-                    Publish Question & Poll
-                  </button>
+                  <h1 className="text-dark">Question <FaRegHandPaper /> </h1>
+                    <QuestionForm        
+                      onSubmit={addQuestion}/>
+                  
+                    <div className="container">
+                        <div className="d-block subheading">Setup your poll <FaBuffer/></div>
+                          <div className="my-2 row"> 
+                            <div className="col border border-2 p-3 d-flex align-items-start flex-column">           
+                              <div className="mb-auto p-2"> 
+                                Set up your poll ! Add poll options to help folks assist with your decision.
+                                If you typed '#flocks' and a list of items in your question, the poll will be created for you.
+                                Once your question and poll are setup. Publish it with the green button below for others to see it.
+                                
+                              </div>
+                            </div>     
+                            <div className="col col-md-auto">
+                            <Item
+                              todos={todos}
+                              completeTodo={completeTodo}
+                              removeTodo={removeTodo}
+                              updateTodo={updateTodo}
+                            />
+                            <ItemForm onSubmit={addTodo} />
+                            </div>
+                          </div>
+                    </div>
+                    <button onClick={handlePublishQuestion} className='btn btn-success btn-lg disabled my-3'>
+                      Publish Question & Poll
+                    </button>
                 </div>
             </section>
-            <hr className="m-0"></hr>
-            <section className='' id="question-poll">             
-         
-            </section>
-            <hr className="m-0"></hr>
-            <section className='' id="questions">
-              all questions
-            </section>
+            <hr className="m-0"></hr>            
         </div>
     </div>
   );
