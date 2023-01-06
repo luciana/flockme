@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Question from "./Question";
+import QuestionAndPoll from './QuestionAndPoll';
 import {
     getQuestions as getQuestionsAPI,
     createQuestion as createQuestionAPI,
@@ -14,6 +15,7 @@ const Questions = ({questionURL, currentUserId}) => {
         (backendQuestion) => backendQuestion.parentId === null
     );
 
+
     const getReplies = (questionId) =>
     backendQuestions
       .filter((backendQuestion) => backendQuestion.parentId === questionId)
@@ -22,10 +24,12 @@ const Questions = ({questionURL, currentUserId}) => {
           new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
       );
 
-      const addQuestion = (text, parentId) => {
-        console.log('addQuestion triggered', text, parentId);
-        createQuestionAPI(text, parentId).then((question) => {
-          setBackendQuestions([question, ...backendQuestions]);
+      const addQuestion = (text) => {
+        console.log('addQuestion triggered', text);
+        createQuestionAPI(text).then((question) => {
+          console.log('adding Question in progress', question.text);
+          console.log('going into backendQuestions ', backendQuestions);
+          setBackendQuestions([question.text, ...backendQuestions]);
           setActiveQuestion(null);
         });
       };
@@ -61,7 +65,9 @@ const Questions = ({questionURL, currentUserId}) => {
 
       return (
         <div className="container">
-            <h3> My Questions</h3>
+            <div><QuestionAndPoll 
+                    addQuestion={addQuestion} />
+             </div>
             <div>
             {console.log('rootQuestions',rootQuestions)}
                 {rootQuestions.map((rootQuestion) => (                    

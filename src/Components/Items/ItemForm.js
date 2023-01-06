@@ -14,7 +14,8 @@ function ItemForm(props) {
 
     props.onSubmit({
       id: Math.floor(Math.random() * 10000),
-      text: input
+      text: input,
+      votes: 0
     });
     
     setInput('');

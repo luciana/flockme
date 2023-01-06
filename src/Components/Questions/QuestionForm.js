@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 
 const QuestionForm = ({
   handleSubmit, 
@@ -12,10 +12,9 @@ const QuestionForm = ({
   const inputRef = useRef(null);
   const isTextareaEmpty = input.length === 0;
 
-  console.log('submitlabel',submitLabel );
-  useEffect(() => {
-    inputRef.current.focus();
-  });
+  // useEffect(() => {
+  //   inputRef.current.focus();
+  // });
 
   const handleChange = e => {
     setInput(e.target.value);
@@ -23,6 +22,7 @@ const QuestionForm = ({
 
   const onSubmit = e => {
     e.preventDefault();
+    console.log("handleSubmit(input);", input);
     handleSubmit({
       id: Math.floor(Math.random() * 10000),
       text: input,
@@ -31,7 +31,7 @@ const QuestionForm = ({
       username: "Luciana",
       createdAt: new Date().toISOString()
     });
-    // setInput('');
+    setInput('');
   }
 
   return (

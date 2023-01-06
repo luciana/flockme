@@ -47,7 +47,15 @@ function Question({
             <QuestionForm
               submitLabel="Reply"
               placeHolderText="tell us if the suggestion worked out"   
-              handleSubmit={(text) => addQuestion(text, replyId)}
+              handleSubmit={(text) => addQuestion({
+                id: Math.floor(Math.random() * 10000),
+                text: text,
+                parentId: replyId,
+                userId: "2",
+                username: "Luciana",
+                createdAt: new Date().toISOString(),
+                options:[],
+              })}
             />
           )}
           {replies.length > 0 && (
