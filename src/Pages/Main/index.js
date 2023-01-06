@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import '../pages.css';
 import '../profile-nav.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Vote from '../../Components/Vote';
-import SideNav from '../../Components/SideNav';
+import Vote from '../../Components/Votes/Vote';
+import SideNav from '../../Components/Shared/SideNav';
 import { FaCircleNotch , FaCircle} from 'react-icons/fa';
 
 function Main() {

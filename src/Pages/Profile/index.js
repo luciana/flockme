@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
-import '../../Components/Item.css';
+import '../../Components/Items/Item.css';
 import './../pages.css';
 import './../profile-nav.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ItemForm from '../../Components/ItemForm';
-import Item from '../../Components/Item';
-import QuestionForm from '../../Components/QuestionForm';
-import SideNav from '../../Components/SideNav';
+import ItemForm from '../../Components/Items/ItemForm';
+import Item from '../../Components/Items/Item';
+import QuestionForm from '../../Components/Questions/QuestionForm';
+import SideNav from '../../Components/Shared/SideNav';
 import { FaRegHandPaper, FaBuffer } from 'react-icons/fa';
+import Questions from '../../Components/Questions/Questions';
 
 
 
@@ -17,14 +18,15 @@ function Profile() {
   const [todos, setTodos] = useState([]);
   const [question, setQuestion] = useState([]);
   
-  const addQuestion = question => {
+  const addQuestionAndPoll = question => {
+    console.log("addQuestionAndPoll", question);
     let v = question.text;
     if (!v || /^\s*$/.test(v)) {
       return;
     }
-
-    setQuestion(question);
     console.log("added new question", question);
+    setQuestion(question);
+    
 
     //Setup Poll automatically with the files in #flocks
     let found = v.indexOf(TAG);
@@ -62,9 +64,6 @@ function Profile() {
         text: index[i].trim()
       });
     }
-
-    
-    
   };
 
   const addTodo = todo => {
@@ -115,8 +114,11 @@ function Profile() {
             <section className="resume-section" id="question-form">
                 <div className="resume-section-content">
                   <h1 className="text-dark">Question <FaRegHandPaper /> </h1>
-                    <QuestionForm        
-                      onSubmit={addQuestion}/>
+                    <QuestionForm  
+                      submitLabel="Ask"
+                      placeHolderText="i.e What should I eat today? #flocks pizza, pasta, salad"                   
+                      handleSubmit={addQuestionAndPoll}
+                      />
                   
                     <div className="container">
                         <div className="d-block subheading">Setup your poll <FaBuffer/></div>
@@ -149,7 +151,10 @@ function Profile() {
             <section className="resume-section" id="stats">
                 <div className="resume-section-content">
                  
-                  
+                <Questions
+                    questionsUrl="http://localhost:3000/questions"
+                    currentUserId="2"
+                  />
                 </div>
             </section>          
         </div>

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import ItemForm from './ItemForm';
 import Item from './Item';
-import QuestionForm from './QuestionForm';
-import Question from './Question';
+import QuestionForm from '../Questions/QuestionForm';
+import Question from '../Questions/Question';
 
 
 const TAG = "#flocks";
@@ -124,15 +124,8 @@ function ItemList() {
   return (
     <>
       <h1>How can we help you ?</h1>
-      <QuestionForm        
-        onSubmit={addQuestion}/>
-      <Question 
-          question={question} 
-          isActive={isActive}
-          completeTodo= {completeTodo}
-          removeTodo={removeTodo}
-          updateTodo={updateTodo}
-      />         
+     
+             
       <h5 className={isActive ? 'd-block': 'd-block'}>Setup your poll</h5>  
       <Item
         todos={todos}
