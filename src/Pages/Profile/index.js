@@ -14,7 +14,7 @@ function Profile() {
     <div className="App profile container">
         <SideNav name="Luciana Bruscino" />
         <div className="container-fluid p-0">
-            <section className="resume-section" id="question-form">
+            <section className="resume-section" >
                 <div className="resume-section-content">                 
                 <Questions
                     questionsUrl="http://localhost:3000/questions"

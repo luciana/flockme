@@ -1,11 +1,29 @@
 import React from 'react';
 import { TiThumbsUp, TiThumbsDown} from 'react-icons/ti';
 
-const Vote = ({ items, voteUp, voteDown }) => {
+const Vote = ({ question, handleVote }) => {
 
+    console.log('vote - question', question);
+    const items = question.options;
+    console.log('vote - question options', question.options);
+    const voteUp = id => {
+      let i = [...items];
+      let item = i.find(x => x.id === id);
+    
+      item.votes++;
+  
+      handleVote(question);
+    };
+
+    const voteDown = id => {
+      let i = [...items];
+      let item = i.find(x => x.id === id);
+      if (item.votes === 0) return;
+      item.votes--;
+      handleVote(question);
+    };
 
   return items.map((item, index) => (
-   <>
     <div
       className={item.isComplete ? 'todo-row complete' : 'todo-row'}
       key={index}
@@ -25,7 +43,6 @@ const Vote = ({ items, voteUp, voteDown }) => {
         />
       </div>
     </div>
-  </>
   ));
 };
 

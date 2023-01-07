@@ -77,11 +77,7 @@ function Main() {
                    
                   </div>
                
-                  <Vote
-                    items={items}
-                    voteUp={voteUp}
-                    voteDown={voteDown}
-                  />
+                  
                    <p > Voting closed <FaCircle /> </p>
 
                    <blockquote className="blocquote"> 
@@ -99,11 +95,7 @@ function Main() {
                    
                   </div>
                
-                  <Vote
-                    items={items2}
-                    voteUp={voteUp}
-                    voteDown={voteDown}
-                  />
+                  
                    <p > Voting Open < FaCircleNotch /> </p>
                 </div>
               </div> 

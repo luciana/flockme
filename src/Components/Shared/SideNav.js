@@ -1,7 +1,6 @@
 import React from 'react';
 import Avatar from 'react-avatar';
 
-
 function SideNav({ name }) {
   return(
       <>       
@@ -10,19 +9,18 @@ function SideNav({ name }) {
                 <span className="d-block d-lg-none">{name} @ FlockMe</span>
                 <span className="d-none d-lg-block">
                     <Avatar name="{name}" className="img-fluid img-profile rounded-circle mx-auto mb-2" alt="{name}" />
-                </span>
-               
+                </span>               
             </a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
             <div className="collapse navbar-collapse" id="navbarResponsive">
                 <ul className="navbar-nav">
                     <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/">Home</a></li>                    
-                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/Profile">New Question</a></li>                  
-                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/Main">All Questions</a></li>     
+                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/Profile#question-form">New Question</a></li>                  
+                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/Profile#all-questions">All Questions</a></li>     
                     <hr />
-                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/Main">Profile</a></li>  
+                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/Profile#account">Profile</a></li>  
                     <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/Profile/#stats">Stats</a></li> 
-                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/Main">Sign out</a></li>                
+                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/Profile">Sign out</a></li>                
                 </ul>
             </div>
         </nav>

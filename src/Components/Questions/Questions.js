@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import Question from "./Question";
 import QuestionAndPoll from './QuestionAndPoll';
+
+
 import {
     getQuestions as getQuestionsAPI,
     createQuestion as createQuestionAPI,
@@ -65,12 +67,13 @@ const Questions = ({questionURL, currentUserId}) => {
 
       return (
         <div className="container">
-            <div><QuestionAndPoll 
+            <div id="question-form">
+                <QuestionAndPoll 
                     addQuestion={addQuestion} />
              </div>
-            <div>
-            {console.log('rootQuestions',rootQuestions)}
-                {rootQuestions.map((rootQuestion) => (                    
+            <div id="all-questions">
+     
+                {rootQuestions.map((rootQuestion) => (
                     <Question 
                         key={rootQuestion.id}
                         question={rootQuestion}

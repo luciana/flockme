@@ -1,5 +1,6 @@
 import React from 'react';
 import QuestionForm from './QuestionForm';
+import Vote from '../Votes/Vote';
 
 
 function Question({ 
@@ -34,6 +35,10 @@ function Question({
         </div>        
         <div className="p-2"> 
           {question.text}
+        </div>
+        <div className="p-2">
+          <Vote question={question} 
+                handleVote={updateQuestion} />    
         </div>
         <div className="p-2">
           {canReply && (

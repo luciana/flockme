@@ -56,11 +56,7 @@ function ItemList() {
         updateTodo={updateTodo}
       />
        <ItemForm onSubmit={addTodo} />
-       <Vote
-        items={items}
-        voteUp={completeTodo}
-        voteDown={removeTodo}
-      />
+      
     </>
   );
 }

@@ -4,8 +4,8 @@ export const getQuestions = async () => {
         "id": 1,
         "text": "Just met this guy, he is so nice. He surprised me with tickets to the Cavs vs Lakers game. We live in Cleveland, Ohio so I think he is assuming I am a Cavs fan; however, I am a huge Lakers fan. Should I wear the Lakers jersey to the game or should I just go neutral - no team jersey? #flocks Cavs Jersey, No Jersey",
         "parentId": null,
-        "userId": "2",
-        "username": "Luciana",
+        "userId": "1",
+        "username": "Mary",
         "createdAt": "2023-01-06T19:17:18.780Z",
         "options": [
             {
@@ -65,8 +65,8 @@ export const getQuestions = async () => {
         "id": 5,
         "text": "What should I eat today? #flocks pizza, pasta, salad",
         "parentId": null,
-        "userId": "2",
-        "username": "Luciana",
+        "userId": "3",
+        "username": "Rodolfo",
         "createdAt": "2023-01-06T18:53:58.120Z",
         "options": [{
                 "id": 292,
