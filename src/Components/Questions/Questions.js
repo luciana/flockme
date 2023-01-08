@@ -18,19 +18,17 @@ const Questions = ({questionURL, currentUserId}) => {
     );
 
 
-    const getReplies = (questionId) =>
-    backendQuestions
-      .filter((backendQuestion) => backendQuestion.parentId === questionId)
-      .sort(
-        (a, b) =>
-          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
-      );
+    const getReplies = (questionId) =>{       
+        return backendQuestions
+        .filter((backendQuestion) => backendQuestion.parentId === questionId)
+        .sort(
+            (a, b) =>
+            new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+        );}
 
       const addQuestion = (text) => {
         console.log('addQuestion triggered', text);
-        createQuestionAPI(text).then((question) => {
-          console.log('adding Question in progress', question.text);
-          console.log('going into backendQuestions ', backendQuestions);
+        createQuestionAPI(text).then((question) => {         
           setBackendQuestions([question.text, ...backendQuestions]);
           setActiveQuestion(null);
         });
@@ -72,7 +70,6 @@ const Questions = ({questionURL, currentUserId}) => {
                     addQuestion={addQuestion} />
              </div>
             <div id="all-questions">
-     
                 {rootQuestions.map((rootQuestion) => (
                     <Question 
                         key={rootQuestion.id}

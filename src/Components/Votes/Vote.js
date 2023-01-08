@@ -3,9 +3,11 @@ import { TiThumbsUp, TiThumbsDown} from 'react-icons/ti';
 
 const Vote = ({ question, handleVote }) => {
 
-    console.log('vote - question', question);
+    //console.log('vote - question', question);
     const items = question.options;
-    console.log('vote - question options', question.options);
+    //console.log('vote - question options', question.options);
+    
+    if (!items) return;
     const voteUp = id => {
       let i = [...items];
       let item = i.find(x => x.id === id);
@@ -22,6 +24,7 @@ const Vote = ({ question, handleVote }) => {
       item.votes--;
       handleVote(question);
     };
+
 
   return items.map((item, index) => (
     <div

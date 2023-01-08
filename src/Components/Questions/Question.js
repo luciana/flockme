@@ -21,7 +21,7 @@ function Question({
   const canReply = currentUserId === question.userId 
   const createdAt = new Date(question.createdAt).toLocaleDateString();
   const replyId = parentId ? parentId : question.id;
-  console.log("replyId",replyId);
+
   const isReplying =
     activeQuestion &&
     activeQuestion.id === question.id &&
@@ -63,11 +63,11 @@ function Question({
               })}
             />
           )}
-          {replies.length > 0 && (
-          <div className="replies">
+          {replies.length > 0 && (             
+          <div className="replies alert alert-primary ">            
             {replies.map((reply) => (
               <Question
-                comment={reply}
+                question={reply}
                 key={reply.id}
                 setActiveQuestion={setActiveQuestion}
                 activeQuestion={activeQuestion}
