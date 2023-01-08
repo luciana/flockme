@@ -1,6 +1,7 @@
 import React from 'react';
 import QuestionForm from './QuestionForm';
 import Vote from '../Votes/Vote';
+import { FaCircleNotch , FaCircle} from 'react-icons/fa';
 
 
 function Question({ 
@@ -17,10 +18,12 @@ function Question({
 
  if (!question) return;
 
-  const canDelete = currentUserId === question.userId 
-  const canReply = currentUserId === question.userId 
+  const isAReply = question.parentId != null;
+  const canDelete = currentUserId === question.userId  && !isAReply
+  const canReply = currentUserId === question.userId && !isAReply
   const createdAt = new Date(question.createdAt).toLocaleDateString();
   const replyId = parentId ? parentId : question.id;
+  const voteEnded = new Date() - new Date(question.voteEndAt) > 1;
 
   const isReplying =
     activeQuestion &&
@@ -32,10 +35,29 @@ function Question({
         <div className="p-2"> 
             <div>{question.username}</div>
             <div>{createdAt}</div>
-        </div>        
+        </div>      
         <div className="p-2"> 
-          {question.text}
+            {question.text} 
         </div>
+        {!isAReply && voteEnded && (
+          <div> 
+            <p > Voting closed <FaCircle /> on {new Date(question.voteEndAt).toLocaleDateString()} </p>
+           
+          </div>         
+        )}
+         {!isAReply && !voteEnded && (
+          <div> 
+        
+
+          
+            <p > Voting Open < FaCircleNotch /> until {new Date(question.voteEndAt).toLocaleDateString()}</p>
+          </div>         
+        )}
+        {isAReply && (
+            <div> 
+              <FaCircle color="green"/> {question.sentiment}                  
+            </div>
+          )}
         <div className="p-2">
           <Vote question={question} 
                 handleVote={updateQuestion} />    
