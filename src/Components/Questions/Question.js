@@ -2,7 +2,8 @@ import React from 'react';
 import QuestionForm from './QuestionForm';
 import Vote from '../Votes/Vote';
 import { FaCircleNotch , FaCircle} from 'react-icons/fa';
-
+import Avatar from 'react-avatar';
+import QuestionAndPoll from './QuestionAndPoll';
 
 function Question({ 
   question, 
@@ -33,6 +34,7 @@ function Question({
   return (
      <div key={question.id} className="my-5 row border border-2 p-3 d-flex align-items-start flex-column" >       
         <div className="p-2"> 
+            <div> <Avatar name="{question.name}" className="img-fluid img-profile rounded-circle mx-auto mb-0" alt="{question.name}" /></div>
             <div>{question.username}</div>
             <div>{createdAt}</div>
         </div>      
@@ -41,7 +43,7 @@ function Question({
         </div>
         {!isAReply && voteEnded && (
           <div> 
-            <p > Voting closed <FaCircle /> on {new Date(question.voteEndAt).toLocaleDateString()} </p>
+            <p > Voting closed <FaCircle /> on {question.voteEndAt} </p>
            
           </div>         
         )}
@@ -50,7 +52,7 @@ function Question({
         
 
           
-            <p > Voting Open < FaCircleNotch /> until {new Date(question.voteEndAt).toLocaleDateString()}</p>
+            <p > Voting Open < FaCircleNotch /> until {question.voteEndAt}</p>
           </div>         
         )}
         {isAReply && (

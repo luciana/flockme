@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import QuestionForm from './QuestionForm';
 import ItemForm from '../Items/ItemForm';
 import Item from '../Items/Item';
-import { FaRegHandPaper, FaBuffer } from 'react-icons/fa';
+import { FaRegHandPaper } from 'react-icons/fa';
 
 const TAG = "#flocks";
 
@@ -12,6 +12,7 @@ function QuestionAndPoll({
 }){
 
     const [todos, setTodos] = useState([]);
+    const [votePeriod, setVotePeriod] = useState(10);
     const [question, setQuestion] = useState([]);
     const addQuestionAndPoll = question => {
         console.log("addQuestionAndPoll", question);
@@ -85,43 +86,59 @@ function QuestionAndPoll({
         setTodos(removedArr);
       };
 
+      const handleChange = e => {       
+        console.log("onchange radio buttonj" ,e.currentTarget.value);
+        setVotePeriod(e.currentTarget.value);
+
+      }
       const handlePublishQuestion = e => {
-        question.options = todos;
         e.preventDefault();
+        const createdDate = new Date(question.createdAt);
+        const newDate = addMinutes(createdDate, parseFloat(votePeriod));
+        question.voteEndAt = newDate;
+        question.options = todos;
+       
         addQuestion(question);
+      }
+
+      const addMinutes = (date, minutes)  => {
+        date.setMinutes(date.getMinutes() + minutes);
+      
+        return date;
       }
 
     return(
         <>
          <h1 className="text-dark">Question <FaRegHandPaper /> </h1>
+         <small className="text-start m-0 text-black-50"><strong>Pro Tip:</strong> Type '#flocks' followed by a list of items in your question, the poll will be created for you.</small>    
         <QuestionForm  
         submitLabel="Ask"
         placeHolderText="i.e What should I eat today? #flocks pizza, pasta, salad"                   
         handleSubmit={addQuestionAndPoll}
         />
-        <div className="container">
-          <div className="d-block subheading">Setup your poll <FaBuffer/></div>
-            <div className="my-2 row"> 
-              <div className="col border border-2 p-3 d-flex align-items-start flex-column">           
-                <div className="mb-auto p-2"> 
-                  Set up your poll ! Add poll options to help folks assist with your decision.
-                  If you typed '#flocks' and a list of items in your question, the poll will be created for you.
-                  Once your question and poll are setup. Publish it with the green button below for others to see it.                  
-                </div>
-              </div>     
-              <div className="col col-md-auto">
-              <Item
-                todos={todos}           
-                removeTodo={removeTodo}
-                updateTodo={updateTodo}
-              />
-              <ItemForm onSubmit={addTodo} />
-              </div>
-            </div>
-        </div>
-         <button onClick={handlePublishQuestion} className='btn btn-success btn-lg my-3'>
-            Publish Question & Poll
-        </button>
+        
+        <Item
+          todos={todos}           
+          removeTodo={removeTodo}
+          updateTodo={updateTodo}
+        />
+        <ItemForm onSubmit={addTodo} />
+
+        <span>How Long the Pool will remain open? </span>
+          <div className="form-check form-check-inline">
+              <input type="radio" onChange={handleChange} className="form-check-input" id="10" name="votePeriod" value="10" checked={votePeriod === "10"} /><label className="form-check-label"  htmlFor="10">10 min</label>
+          </div>
+          <div className="form-check form-check-inline">
+              <input type="radio" onChange={handleChange} className="form-check-input" id="120" name="votePeriod" value="120" checked={votePeriod === "120"}/><label className="form-check-label" htmlFor="120">2 hours</label>
+          </div>
+          <div className="form-check form-check-inline">
+            <input type="radio" onChange={handleChange} className="form-check-input" id="480" name="votePeriod" value="480" checked={votePeriod === "480"} /><label className="form-check-label" htmlFor="480">8 hours</label>
+          </div>
+          <div>
+          <button onClick={handlePublishQuestion} className='btn btn-success btn-lg my-3'>
+              Publish Question & Poll
+          </button>
+         </div>
       </>
     );
 };

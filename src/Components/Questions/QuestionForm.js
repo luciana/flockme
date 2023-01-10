@@ -42,6 +42,7 @@ const QuestionForm = ({
             onChange={handleChange}
             name='textarea'
             rows="6"
+            maxLength="124"
             className='form-control '
             ref={inputRef}
           />

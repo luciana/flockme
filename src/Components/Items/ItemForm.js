@@ -39,17 +39,21 @@ function ItemForm(props) {
         </>
       ) : (
         <>
+        
+      
           <input
-            placeholder='Add an option to your poll'
+            placeholder='Type available answers'
             value={input}
             onChange={handleChange}
             name='text'
             className='todo-input'
             ref={inputRef}
-          />
+          />  
+          
           <button onClick={handleSubmit} className='todo-button'>
            Add Option
-          </button>          
+          </button>  
+            
        </>
       )}
       
