@@ -3,7 +3,6 @@ import QuestionForm from './QuestionForm';
 import Vote from '../Votes/Vote';
 import { FaCircleNotch , FaCircle} from 'react-icons/fa';
 import Avatar from 'react-avatar';
-import QuestionAndPoll from './QuestionAndPoll';
 
 function Question({ 
   question, 
@@ -19,10 +18,23 @@ function Question({
 
  if (!question) return;
 
+
+ const formatDateAndTime = (date_input)  => {
+  let date = new Date(date_input);
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var ampm = hours >= 12 ? 'pm' : 'am';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  minutes = minutes < 10 ? '0'+minutes : minutes;
+  var strTime = hours + ':' + minutes + ' ' + ampm;
+  return date.getMonth()+1 + "/" + date.getDate() + "/" + date.getFullYear() + " at " + strTime;
+}
+
   const isAReply = question.parentId != null;
   const canDelete = currentUserId === question.userId  && !isAReply
   const canReply = currentUserId === question.userId && !isAReply
-  const createdAt = new Date(question.createdAt).toLocaleDateString();
+  const createdAt = formatDateAndTime(question.createdAt);
   const replyId = parentId ? parentId : question.id;
   const voteEnded = new Date() - new Date(question.voteEndAt) > 1;
 
@@ -32,34 +44,22 @@ function Question({
     activeQuestion.type === "replying";
 
   return (
-     <div key={question.id} className="my-5 row border border-2 p-3 d-flex align-items-start flex-column" >       
-        <div className="p-2"> 
-            <div> <Avatar name="{question.name}" className="img-fluid img-profile rounded-circle mx-auto mb-0" alt="{question.name}" /></div>
-            <div>{question.username}</div>
-            <div>{createdAt}</div>
+     <div key={question.id} className="my-5 container border border-2 p-3 d-flex  flex-column" >       
+        <div className="p-2 row align-items-start"> 
+            <div className="col-1"> <Avatar size="36" name="{question.name}" className="img-fluid img-profile rounded-circle mx-auto mb-0" alt="{question.name}" /></div>
+            <div className="col-11">
+              <div className="text-small lh-1"><span>{question.username} </span><span aria-hidden="true"> · </span> <span> {createdAt} </span></div>
+              <div className="text-small">
+                {!isAReply && voteEnded && (<span > Voting closed <FaCircle /> </span>)}
+                {!isAReply && !voteEnded && (<span> Voting Open < FaCircleNotch /> until {formatDateAndTime(question.voteEndAt)}</span>)}
+                {isAReply && (<span><FaCircle color="green"/> {question.sentiment}</span>)}
+              </div>
+              
+            </div>
         </div>      
         <div className="p-2"> 
             {question.text} 
         </div>
-        {!isAReply && voteEnded && (
-          <div> 
-            <p > Voting closed <FaCircle /> on {question.voteEndAt} </p>
-           
-          </div>         
-        )}
-         {!isAReply && !voteEnded && (
-          <div> 
-        
-
-          
-            <p > Voting Open < FaCircleNotch /> until {question.voteEndAt}</p>
-          </div>         
-        )}
-        {isAReply && (
-            <div> 
-              <FaCircle color="green"/> {question.sentiment}                  
-            </div>
-          )}
         <div className="p-2">
           <Vote question={question} 
                 handleVote={updateQuestion} />    
