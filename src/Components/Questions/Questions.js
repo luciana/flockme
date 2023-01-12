@@ -1,11 +1,6 @@
 import { useState, useEffect } from "react";
 import Question from "./Question";
-import {
-    getQuestions as getQuestionsAPI,
-    createQuestion as createQuestionAPI,
-    updateQuestion as updateQuestionAPI,
-    deleteQuestion as deleteQuestionAPI,
-} from '../../Services/api';
+import QuestionService from '../../Services/QuestionService'
 
 const Questions = ({questionURL, currentUserId}) => {
     const [backendQuestions, setBackendQuestions] = useState([]);
@@ -14,6 +9,11 @@ const Questions = ({questionURL, currentUserId}) => {
         (backendQuestion) => backendQuestion.parentId === null
     );
 
+    useEffect(() => {
+        QuestionService.getQuestions().then((data) => {
+          setBackendQuestions(data);
+        });
+      }, []);
 
     const getReplies = (questionId) =>{       
         return backendQuestions
@@ -22,18 +22,11 @@ const Questions = ({questionURL, currentUserId}) => {
             (a, b) =>
             new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
         );}
-
-    //   const addQuestion = (text) => {
-    //     console.log('addQuestion triggered', text);
-    //     createQuestionAPI(text).then((question) => {         
-    //       setBackendQuestions([question.text, ...backendQuestions]);
-    //       setActiveQuestion(null);
-    //     });
-    //   };
     
       const updateQuestion = (text, questionId) => {
-        updateQuestionAPI(text).then(() => {
-          const updatedBackendQuestions = backendQuestions.map((backendQuestion) => {
+        console.log("updateQuestion triggered", QuestionService.updateQuestion(text, questionId));
+        QuestionService.updateQuestion(text, questionId).then((data) => {
+            const updatedBackendQuestions = backendQuestions.map((backendQuestion) => {
             if (backendQuestion.id === questionId) {
               return { ...backendQuestion, body: text };
             }
@@ -45,7 +38,7 @@ const Questions = ({questionURL, currentUserId}) => {
       };
       const deleteQuestion = (questionId) => {
         if (window.confirm("Are you sure you want to remove question?")) {
-          deleteQuestionAPI().then(() => {
+            QuestionService.deleteQuestion.then(() => {
             const updatedBackendQuestions = backendQuestions.filter(
               (backendQuestion) => backendQuestion.id !== questionId
             );
@@ -54,11 +47,9 @@ const Questions = ({questionURL, currentUserId}) => {
         }
       };
     
-      useEffect(() => {
-        getQuestionsAPI().then((data) => {
-          setBackendQuestions(data);
-        });
-      }, []);
+      const handleVote =(question, id) =>{      
+        updateQuestion(question);
+      }
 
       return (
         <div className="container">
@@ -70,6 +61,7 @@ const Questions = ({questionURL, currentUserId}) => {
                         question={rootQuestion}
                         replies={getReplies(rootQuestion.id)}                        
                         setActiveQuestion={setActiveQuestion}
+                        handleVote={handleVote}
                         activeQuestion={activeQuestion}                       
                         deleteQuestion={deleteQuestion}
                         updateQuestion={updateQuestion}                        

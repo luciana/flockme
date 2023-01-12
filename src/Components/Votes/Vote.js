@@ -1,5 +1,5 @@
 import React from 'react';
-import { TiThumbsUp, TiThumbsDown} from 'react-icons/ti';
+import { TiThumbsUp} from 'react-icons/ti';
 
 const Vote = ({ question, handleVote }) => {
 
@@ -8,23 +8,15 @@ const Vote = ({ question, handleVote }) => {
     //console.log('vote - question options', question.options);
     
     if (!items) return;
+
     const voteUp = id => {
       let i = [...items];
       let item = i.find(x => x.id === id);
     
       item.votes++;
   
-      handleVote(question);
+      handleVote(question, id);
     };
-
-    const voteDown = id => {
-      let i = [...items];
-      let item = i.find(x => x.id === id);
-      if (item.votes === 0) return;
-      item.votes--;
-      handleVote(question);
-    };
-
 
   return items.map((item, index) => (
     <div
@@ -36,14 +28,11 @@ const Vote = ({ question, handleVote }) => {
         {item.text}
       </div>
       <div className='icons'>
-        <TiThumbsUp
-          onClick={() => voteUp(item.id)}
-          className='mx-5'
-        />
-        <TiThumbsDown
-          onClick={() => voteDown(item.id)}
-          className='mx-3'
-        />
+         <span className=" mx-5 badge rounded-pill bg-light text-dark"  onClick={() => voteUp(item.id)}>
+            Vote
+        <TiThumbsUp  />
+        </span>
+      
       </div>
     </div>
   ));

@@ -9,6 +9,7 @@ function Question({
   setActiveQuestion,
   activeQuestion,
   deleteQuestion,
+  handleVote,
   updateQuestion,
   parentId = null,
   currentUserId,
@@ -60,7 +61,7 @@ function Question({
         </div>
         <div className="p-2">
           <Vote question={question} 
-                handleVote={updateQuestion} />    
+                handleVote={handleVote} />    
         </div>
         <div className="p-2">
           {canReply && (
