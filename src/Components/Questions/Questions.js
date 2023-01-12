@@ -1,15 +1,11 @@
 import { useState, useEffect } from "react";
 import Question from "./Question";
-import QuestionAndPoll from './QuestionAndPoll';
-
-
-
 import {
     getQuestions as getQuestionsAPI,
     createQuestion as createQuestionAPI,
     updateQuestion as updateQuestionAPI,
     deleteQuestion as deleteQuestionAPI,
-} from '../../api';
+} from '../../Services/api';
 
 const Questions = ({questionURL, currentUserId}) => {
     const [backendQuestions, setBackendQuestions] = useState([]);
@@ -27,13 +23,13 @@ const Questions = ({questionURL, currentUserId}) => {
             new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
         );}
 
-      const addQuestion = (text) => {
-        console.log('addQuestion triggered', text);
-        createQuestionAPI(text).then((question) => {         
-          setBackendQuestions([question.text, ...backendQuestions]);
-          setActiveQuestion(null);
-        });
-      };
+    //   const addQuestion = (text) => {
+    //     console.log('addQuestion triggered', text);
+    //     createQuestionAPI(text).then((question) => {         
+    //       setBackendQuestions([question.text, ...backendQuestions]);
+    //       setActiveQuestion(null);
+    //     });
+    //   };
     
       const updateQuestion = (text, questionId) => {
         updateQuestionAPI(text).then(() => {
@@ -66,10 +62,7 @@ const Questions = ({questionURL, currentUserId}) => {
 
       return (
         <div className="container">
-            <div id="question-form">
-                <QuestionAndPoll 
-                    addQuestion={addQuestion} />
-             </div>
+          
             <div id="all-questions">
                 {rootQuestions.map((rootQuestion) => (
                     <Question 
@@ -77,8 +70,7 @@ const Questions = ({questionURL, currentUserId}) => {
                         question={rootQuestion}
                         replies={getReplies(rootQuestion.id)}                        
                         setActiveQuestion={setActiveQuestion}
-                        activeQuestion={activeQuestion}
-                        addQuestion={addQuestion}
+                        activeQuestion={activeQuestion}                       
                         deleteQuestion={deleteQuestion}
                         updateQuestion={updateQuestion}                        
                         currentUserId={currentUserId}

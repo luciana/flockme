@@ -1,5 +1,4 @@
 import React from 'react';
-import QuestionForm from './QuestionForm';
 import Vote from '../Votes/Vote';
 import { FaCircleNotch , FaCircle} from 'react-icons/fa';
 import Avatar from 'react-avatar';
@@ -9,7 +8,6 @@ function Question({
   replies,
   setActiveQuestion,
   activeQuestion,
-  addQuestion,
   deleteQuestion,
   updateQuestion,
   parentId = null,
@@ -72,7 +70,7 @@ function Question({
             <button className="btn btn-sm btn-danger mx-2"  onClick={()=> deleteQuestion(question.id)}>Delete</button>
           )}
           </div>
-          {isReplying && (
+          {/* {isReplying && (
             <QuestionForm
               submitLabel="Reply"
               placeHolderText="tell us if the suggestion worked out"   
@@ -86,8 +84,8 @@ function Question({
                 options:[],
               })}
             />
-          )}
-          {replies.length > 0 && (             
+          )} */}
+          {replies && replies.length > 0 && (             
           <div className="replies alert alert-primary ">            
             {replies.map((reply) => (
               <Question
@@ -96,8 +94,7 @@ function Question({
                 setActiveQuestion={setActiveQuestion}
                 activeQuestion={activeQuestion}
                 updateQuestion={updateQuestion}
-                deleteQuestion={deleteQuestion}
-                addQuestion={addQuestion}
+                deleteQuestion={deleteQuestion}          
                 parentId={question.id}
                 replies={[]}
                 currentUserId={currentUserId}

@@ -15,8 +15,8 @@ import {
         <div>
           <Routes>
             <Route path="/" exact element={<HomePage />} />
-            <Route path="/Main" exact element={<MainPage />} />
-            <Route path="/Profile" exact element={<ProfilePage />} />         
+            <Route path="/Profile" exact element={<MainPage />} />
+            <Route path="/Main" exact element={<ProfilePage />} />         
           </Routes>
         </div>
       </Router>

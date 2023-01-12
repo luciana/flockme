@@ -7,13 +7,23 @@ import { FaRegHandPaper } from 'react-icons/fa';
 const TAG = "#flocks";
 
 function QuestionAndPoll({
-    addQuestion,
     parentId = null
 }){
 
     const [todos, setTodos] = useState([]);
     const [votePeriod, setVotePeriod] = useState(10);
     const [question, setQuestion] = useState([]);
+
+
+    const addQuestion = (text) => {
+          console.log('addQuestion triggered', text);
+          // createQuestionAPI(text).then((question) => {         
+          //   setBackendQuestions([question.text, ...backendQuestions]);
+          //   setActiveQuestion(null);
+          // });
+        };
+
+
     const addQuestionAndPoll = question => {
         console.log("addQuestionAndPoll", question);
         let v = question.text;
@@ -29,6 +39,7 @@ function QuestionAndPoll({
     
         //user has entered the tag to automatically setup the poll
         if (found === -1 ){
+          alert('Your question does not contain any #flocks. i.e Should I take a shower today #flocks yes, no')
           return;
         }
     
