@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Vote from '../Votes/Vote';
-import { FaCircleNotch , FaCircle} from 'react-icons/fa';
+import { FaCircleNotch , FaCircle, FaEdit, FaCut} from 'react-icons/fa';
+import { Tooltip } from 'bootstrap';
 import Avatar from 'react-avatar';
+import ReplyModalDialog from './ReplyModalDialog';
 
 function Question({ 
   question, 
@@ -14,10 +16,15 @@ function Question({
   parentId = null,
   currentUserId,
  }) {
+ 
+  useEffect(() => {
+    //init tooltip
+    Array.from(document.querySelectorAll('button[data-bs-toggle="tooltip"]'))
+    .forEach(tooltipNode => new Tooltip(tooltipNode))
+    });
+
 
  if (!question) return;
-
-
  const formatDateAndTime = (date_input)  => {
   let date = new Date(date_input);
   var hours = date.getHours();
@@ -36,17 +43,20 @@ function Question({
   const createdAt = formatDateAndTime(question.createdAt);
   const replyId = parentId ? parentId : question.id;
   const voteEnded = new Date() - new Date(question.voteEndAt) > 1;
+  
 
   const isReplying =
     activeQuestion &&
     activeQuestion.id === question.id &&
     activeQuestion.type === "replying";
 
+  
+
   return (
      <div key={question.id} className="my-5 container border border-2 p-3 d-flex  flex-column" >       
         <div className="p-2 row align-items-start"> 
             <div className="col-1"> <Avatar size="36" name="{question.name}" className="img-fluid img-profile rounded-circle mx-auto mb-0" alt="{question.name}" /></div>
-            <div className="col-11">
+            <div className="col-8">
               <div className="text-small lh-1"><span>{question.username} </span><span aria-hidden="true"> · </span> <span> {createdAt} </span></div>
               <div className="text-small">
                 {!isAReply && voteEnded && (<span > Voting closed <FaCircle /> </span>)}
@@ -55,6 +65,17 @@ function Question({
               </div>
               
             </div>
+            <div className="col-3">
+              {canReply && (
+                
+                <button className="btn btn-sm btn-dark mx-1 "  data-bs-toggle="tooltip" data-bs-placement="top" title="What happend afterwards?" onClick={()=> setActiveQuestion({id: question.id, type:"replying"})}>
+                <FaEdit alt="Enter What's the outcome of your story?" />
+                </button>
+              )}
+              {canDelete && (
+                <button className="btn btn-sm btn-warning mx-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Question" onClick={()=> deleteQuestion(question.id)}><FaCut alt="Delete question" /></button>
+              )}
+            </div>
         </div>      
         <div className="p-2"> 
             {question.text} 
@@ -62,15 +83,15 @@ function Question({
         <div className="p-2">
           <Vote question={question} 
                 handleVote={handleVote} />    
-        </div>
-        <div className="p-2">
-          {canReply && (
-            <button className="btn btn-sm btn-primary mx-2" onClick={()=> setActiveQuestion({id: question.id, type:"replying"})}>Reply</button>
+        </div>     
+          {replies && replies.length > 0 && (             
+             <div> 
+                <ReplyModalDialog text={replies[0]}/>
+             </div>
           )}
-          {canDelete && (
-            <button className="btn btn-sm btn-danger mx-2"  onClick={()=> deleteQuestion(question.id)}>Delete</button>
-          )}
-          </div>
+           
+         
+
           {/* {isReplying && (
             <QuestionForm
               submitLabel="Reply"
@@ -86,7 +107,7 @@ function Question({
               })}
             />
           )} */}
-          {replies && replies.length > 0 && (             
+          {/* {replies && replies.length > 0 && (             
           <div className="replies alert alert-primary ">            
             {replies.map((reply) => (
               <Question
@@ -102,7 +123,7 @@ function Question({
               />
             ))}
           </div>
-        )}
+        )} */}
       </div>
   );
 }

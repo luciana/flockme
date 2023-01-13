@@ -7,7 +7,7 @@ import {
     deleteQuestion as deleteQuestionAPI,
   } from './api';
 
-//const EMPLOYEE_API_BASE_URL = "http://localhost:8080/api/v1/questions";
+//const QUESTION_API_BASE_URL = "http://localhost:8080/api/v1/questions";
 
  class QuestionService {
 
@@ -26,7 +26,7 @@ import {
     }
 
     updateQuestion(text, questionId){
-        //return axios.update(QUESTION_API_BASE_URL + '/' + questionId);
+        //return axios.update(QUESTION_API_BASE_URL + '/' + questionId);       
         return updateQuestionAPI(questionId);
     }
 

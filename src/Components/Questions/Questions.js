@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Question from "./Question";
 import QuestionService from '../../Services/QuestionService'
+import VoteService from '../../Services/VoteService'
 
 const Questions = ({questionURL, currentUserId}) => {
     const [backendQuestions, setBackendQuestions] = useState([]);
@@ -47,8 +48,18 @@ const Questions = ({questionURL, currentUserId}) => {
         }
       };
     
-      const handleVote =(question, id) =>{      
-        updateQuestion(question);
+      const handleVote =(question, id) =>{             
+        VoteService.createVote(currentUserId, question, id ).then( () => {
+            // console.log('update question record and create vote item');
+            const updatedBackendQuestions = backendQuestions.map((backendQuestion) => {
+                if (backendQuestion.id === question.id) {
+                  return { ...backendQuestion, body: question };
+                }
+                return backendQuestion;
+              });
+            setBackendQuestions(updatedBackendQuestions);
+            setActiveQuestion(null);
+          });
       }
 
       return (
