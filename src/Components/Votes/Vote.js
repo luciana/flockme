@@ -29,7 +29,7 @@ const Vote = ({ question, handleVote }) => {
       </div>
       <div className='icons'>
          <span className=" mx-5 badge rounded-pill bg-light text-dark"  onClick={() => voteUp(item.id)}>
-            Vote
+            
         <TiThumbsUp  />
         </span>
       

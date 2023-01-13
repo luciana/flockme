@@ -3,6 +3,7 @@ import QuestionForm from './QuestionForm';
 import ItemForm from '../Items/ItemForm';
 import Item from '../Items/Item';
 import { FaRegHandPaper } from 'react-icons/fa';
+import QuestionService from '../../Services/QuestionService'
 
 const TAG = "#flocks";
 
@@ -16,12 +17,13 @@ function QuestionAndPoll({
 
 
     const addQuestion = (text) => {
-          console.log('addQuestion triggered', text);
-          // createQuestionAPI(text).then((question) => {         
-          //   setBackendQuestions([question.text, ...backendQuestions]);
-          //   setActiveQuestion(null);
-          // });
-        };
+          console.log('addQuestion triggered from question and poll', text);
+          QuestionService.createQuestion(text).then((question) => {         
+            // setBackendQuestions([question.text, ...backendQuestions]);
+            // setActiveQuestion(null);
+            console.log('addQuestion added question and poll');
+          });
+      };
 
 
     const addQuestionAndPoll = question => {
@@ -127,7 +129,6 @@ function QuestionAndPoll({
         placeHolderText="i.e What should I eat today? #flocks pizza, pasta, salad"                   
         handleSubmit={addQuestionAndPoll}
         />
-        
         <Item
           todos={todos}           
           removeTodo={removeTodo}

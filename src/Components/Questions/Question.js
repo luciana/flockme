@@ -4,6 +4,7 @@ import { FaCircleNotch , FaCircle, FaEdit, FaCut} from 'react-icons/fa';
 import { Tooltip } from 'bootstrap';
 import Avatar from 'react-avatar';
 import ReplyModalDialog from './ReplyModalDialog';
+import QuestionForm from './QuestionForm';
 
 function Question({ 
   question, 
@@ -12,13 +13,12 @@ function Question({
   activeQuestion,
   deleteQuestion,
   handleVote,
-  updateQuestion,
+  addQuestion,
   parentId = null,
   currentUserId,
  }) {
  
   useEffect(() => {
-    //init tooltip
     Array.from(document.querySelectorAll('button[data-bs-toggle="tooltip"]'))
     .forEach(tooltipNode => new Tooltip(tooltipNode))
     });
@@ -38,8 +38,8 @@ function Question({
 }
 
   const isAReply = question.parentId != null;
-  const canDelete = currentUserId === question.userId  && !isAReply
-  const canReply = currentUserId === question.userId && !isAReply
+  const canDelete = currentUserId === question.userId  && !isAReply;
+  const canReply = currentUserId === question.userId && !isAReply && replies.length === 0;
   const createdAt = formatDateAndTime(question.createdAt);
   const replyId = parentId ? parentId : question.id;
   const voteEnded = new Date() - new Date(question.voteEndAt) > 1;
@@ -66,14 +66,14 @@ function Question({
               
             </div>
             <div className="col-3">
-              {canReply && (
-                
+              {canReply && (                
                 <button className="btn btn-sm btn-dark mx-1 "  data-bs-toggle="tooltip" data-bs-placement="top" title="What happend afterwards?" onClick={()=> setActiveQuestion({id: question.id, type:"replying"})}>
-                <FaEdit alt="Enter What's the outcome of your story?" />
+                   <FaEdit alt="Enter What's the outcome of your story?" />
                 </button>
               )}
               {canDelete && (
-                <button className="btn btn-sm btn-warning mx-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Question" onClick={()=> deleteQuestion(question.id)}><FaCut alt="Delete question" /></button>
+                <button className="btn btn-sm btn-warning mx-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Question" onClick={()=> deleteQuestion(question.id)}>
+                  <FaCut alt="Delete question" /></button>
               )}
             </div>
         </div>      
@@ -86,27 +86,27 @@ function Question({
         </div>     
           {replies && replies.length > 0 && (             
              <div> 
-                <ReplyModalDialog text={replies[0]}/>
+                <ReplyModalDialog text={replies}/>
              </div>
           )}
-           
-         
-
-          {/* {isReplying && (
-            <QuestionForm
-              submitLabel="Reply"
-              placeHolderText="tell us if the suggestion worked out"   
+          {isReplying && (
+            <QuestionForm 
+              submitLabel="This is what happened afterwards..."
+              placeHolderText="Explain if the suggestion worked out... "   
               handleSubmit={(text) => addQuestion({
                 id: Math.floor(Math.random() * 10000),
                 text: text,
                 parentId: replyId,
                 userId: "2",
                 username: "Luciana",
+                name: "Luciana Bruscino",
                 createdAt: new Date().toISOString(),
+                voteEndAt: null,
+                sentiment: "Positive",
                 options:[],
               })}
             />
-          )} */}
+          )}
           {/* {replies && replies.length > 0 && (             
           <div className="replies alert alert-primary ">            
             {replies.map((reply) => (

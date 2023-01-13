@@ -6,15 +6,27 @@ import VoteService from '../../Services/VoteService'
 const Questions = ({questionURL, currentUserId}) => {
     const [backendQuestions, setBackendQuestions] = useState([]);
     const [activeQuestion, setActiveQuestion] = useState(null);
+
     const rootQuestions = backendQuestions.filter(
         (backendQuestion) => backendQuestion.parentId === null
-    );
+    ).sort(
+      (a, b) =>
+      new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+    )
 
     useEffect(() => {
         QuestionService.getQuestions().then((data) => {
           setBackendQuestions(data);
         });
       }, []);
+
+      const addQuestion = (text) => {
+        console.log('addQuestion triggered from question and poll', text);
+        QuestionService.createQuestion(text).then((question) => {         
+          setBackendQuestions([question.text, ...backendQuestions]);
+          setActiveQuestion(null);
+        });
+    };
 
     const getReplies = (questionId) =>{       
         return backendQuestions
@@ -73,6 +85,7 @@ const Questions = ({questionURL, currentUserId}) => {
                         replies={getReplies(rootQuestion.id)}                        
                         setActiveQuestion={setActiveQuestion}
                         handleVote={handleVote}
+                        addQuestion={addQuestion}
                         activeQuestion={activeQuestion}                       
                         deleteQuestion={deleteQuestion}
                         updateQuestion={updateQuestion}                        
