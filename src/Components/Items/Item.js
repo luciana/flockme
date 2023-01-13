@@ -22,11 +22,8 @@ const Item = ({ todos, completeTodo, removeTodo, updateTodo }) => {
   }
 
   return todos.map((todo, index) => (
-   <>
-    <div
-      className={todo.isComplete ? 'todo-row complete' : 'todo-row'}
-      key={index}
-    >
+   <div key={index}>
+    <div key={index} className={todo.isComplete ? 'todo-row complete' : 'todo-row'}>
       <div key={todo.id} onClick={() => completeTodo(todo.id)}>
         {todo.text}
       </div>
@@ -41,7 +38,7 @@ const Item = ({ todos, completeTodo, removeTodo, updateTodo }) => {
         />
       </div>
     </div>
-  </>
+  </div>
   ));
 };
 

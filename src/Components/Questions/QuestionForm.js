@@ -27,11 +27,15 @@ const QuestionForm = ({
       id: Math.floor(Math.random() * 10000),
       text: input,
       parentId: null,
-      userId: "2",
+      userId: 2,
       username: "Luciana",
-      createdAt: new Date().toISOString()
+      name: "Luciana Bruscino",
+      createdAt: new Date().toISOString(),
+      voteEndAt: null,
+      sentiment: "Positive",
+      options:[],
     });
-    setInput('');
+    //setInput('');
   }
 
   return (

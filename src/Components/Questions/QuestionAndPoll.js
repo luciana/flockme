@@ -4,16 +4,19 @@ import ItemForm from '../Items/ItemForm';
 import Item from '../Items/Item';
 import { FaRegHandPaper } from 'react-icons/fa';
 import QuestionService from '../../Services/QuestionService'
+import { ConsoleLogger } from '@aws-amplify/core';
+import { useNavigate } from 'react-router-dom';
 
 const TAG = "#flocks";
 
 function QuestionAndPoll({
-    parentId = null
+    parentId = null,
 }){
 
     const [todos, setTodos] = useState([]);
     const [votePeriod, setVotePeriod] = useState(10);
-    const [question, setQuestion] = useState([]);
+    const [question, setQuestion] = useState([]);     
+    const navigate = useNavigate();
 
 
     const addQuestion = (text) => {
@@ -21,35 +24,37 @@ function QuestionAndPoll({
           QuestionService.createQuestion(text).then((question) => {         
             // setBackendQuestions([question.text, ...backendQuestions]);
             // setActiveQuestion(null);
-            console.log('addQuestion added question and poll');
+            console.log('addQuestion added question and poll', text);
+            
+            setQuestion(text);
+            //redirect to main page
+            navigate('/Main');            
           });
       };
 
 
-    const addQuestionAndPoll = question => {
-        console.log("addQuestionAndPoll", question);
+    const addQuestionAndPoll = question => {      
         let v = question.text;
         if (!v || /^\s*$/.test(v)) {
           return;
         }
-        console.log("added new question", question);
-        setQuestion(question);
-        
     
         //Setup Poll automatically with the files in #flocks
         let found = v.indexOf(TAG);
     
-        //user has entered the tag to automatically setup the poll
+        //user has not entered the tag to automatically setup the poll
         if (found === -1 ){
           alert('Your question does not contain any #flocks. i.e Should I take a shower today #flocks yes, no')
           return;
         }
     
+       
         let list = v.substring(found + TAG.length);
+         //user has not entered the tag with a list of itemes
         if (!list || /^\s*$/.test(list)) {
           return;
         }
-        console.log("list", list);
+       
     
         //user used comma as a delimiter
         let foundComma = list.indexOf(',');
