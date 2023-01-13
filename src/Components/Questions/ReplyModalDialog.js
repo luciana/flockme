@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Modal } from 'react-bootstrap'
-import { RiMessage3Line, RiFacebookCircleFill, RiTwitterFill }  from 'react-icons/ri';
-
+import { RiMessage3Line }  from 'react-icons/ri';
+import {FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon } from "react-share";
 
 function ReplyModalDialog(replies) {
 
@@ -22,13 +22,23 @@ function ReplyModalDialog(replies) {
               <Modal.Body>
                   {reply.text}
               </Modal.Body>
-              <Modal.Footer>                
-                <button type="button" className="btn btn-light" onClick={() => {invokeModal(false)}}> 
-                  <RiFacebookCircleFill size="36" />
-                </button>     
-                <button type="button" className="btn btn-light" onClick={() => {invokeModal(false)}}> 
-                  <RiTwitterFill size="36" />
-                </button>
+              <Modal.Footer>                           
+                <FacebookShareButton
+                    url={"http://www.flockapp.com"}
+                    quote={"Flock App just helped with a simple decision in my life.."}
+                    hashtag="#flockapp"
+                    className="btn btn-light"
+                  >
+                    <FacebookIcon size={36} />
+                  </FacebookShareButton>
+                  <TwitterShareButton
+                    url={"http://www.flockapp.com"}
+                    title={"flockapp - World is yours to explore"}
+                    hashtag="#camperstribe"
+                    className="btn btn-light"
+                  >
+                    <TwitterIcon size={36} />
+                  </TwitterShareButton>
               </Modal.Footer>
             </Modal>
             </div>

@@ -4,7 +4,6 @@ import ItemForm from '../Items/ItemForm';
 import Item from '../Items/Item';
 import { FaRegHandPaper } from 'react-icons/fa';
 import QuestionService from '../../Services/QuestionService'
-import { ConsoleLogger } from '@aws-amplify/core';
 import { useNavigate } from 'react-router-dom';
 
 const TAG = "#flocks";
