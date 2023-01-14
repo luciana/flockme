@@ -30,6 +30,12 @@ app.use(function(req, res, next) {
  * Example get method *
  **********************/
 
+app.get('/items', function(req, res) {
+  const items = ['hello', 'world']
+  res.json({ success: 'get call succeed!', items });
+});
+
+
 app.get('/items/:itemID', function(req, res) {
   // Add your code here
   res.json({success: 'get call succeed!', url: req.url});

@@ -1,3 +1,11 @@
+body {
+  background-color: #dee2e6;
+}
+
+#all-questions > div{
+  background-color: #fff;
+}
+
 .text-small{
   font-size: .875rem;
 }

@@ -187,18 +187,18 @@ export const getQuestions = async () => {
           }
       ]
   },
-  // {
-  //     id: 8,
-  //       "text": "There is a huge snow storm here today, so I decided to refund it. My daughter was not happy at first but now we get to play in the snow instead, which she loves!",
-  //       "username": "Luciana",  
-  //       "name": "Luciana Bruscino",     
-  //       "userId": "2",
-  //       "parentId": 2,
-  //       "createdAt": "2021-01-14T06:00:33.010+02:00",
-  //       "voteEndAt": "2023-01-13T23:17:18.780Z",
-  //       "sentiment": "Positive",
-  //       "options": [],
-  //     },
+  {
+      id: 8,
+        "text": "There is a huge snow storm here today, so I decided to refund it. My daughter was not happy at first but now we get to play in the snow instead, which she loves!",
+        "username": "Luciana",  
+        "name": "Luciana Bruscino",     
+        "userId": "2",
+        "parentId": 2,
+        "createdAt": "2021-01-14T06:00:33.010+02:00",
+        "voteEndAt": "2023-01-13T23:17:18.780Z",
+        "sentiment": "Positive",
+        "options": [],
+      },
     ];
   };
 

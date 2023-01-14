@@ -14,12 +14,10 @@ function Main() {
     <div className="App profile container">
         <SideNav name="Luciana Bruscino" />
         <div className="container-fluid p-0">
-            <section className="resume-section" >
-                <div className="resume-section-content">                 
+            <section className="" >                              
                 <div id="question-form">
                 <QuestionAndPoll  />
              </div>
-                </div>
             </section>
             <hr className="m-0"></hr>                   
         </div>

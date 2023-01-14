@@ -8,13 +8,14 @@ import {
   import MainPage from './Pages/Main';
   import ProfilePage from './Pages/Profile';
   import './Pages/pages.css'
-  import { createBrowserHistory } from 'history';
+  //import { createBrowserHistory } from 'history';
 
   function App() {
-    const history = createBrowserHistory();
-    
+    //const history = createBrowserHistory();
+
     return (
-      <Router history={ history }>
+      // <Router history={ history }>
+      <Router>
         <div>
           <Routes>
            
