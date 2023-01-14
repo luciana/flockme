@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/questions": {
+      "name": "/questions",
+      "lambdaFunction": "FlockQuestionsAPI",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
