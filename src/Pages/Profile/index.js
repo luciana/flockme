@@ -8,19 +8,20 @@ import Questions from '../../Components/Questions/Questions';
 
 function Profile() {  
   return (
-    <div className="App profile container">
-        <SideNav name="Luciana Bruscino" />
-        <div className="container-fluid p-0">
-            <section className="" >                             
-                <Questions
+    <div className="App profile container-fluid">
+        <SideNav name="Luciana Bruscino" />   
+            <section className="" >         
+              <div className="container white-bg my-5 container border border-2 p-3 d-flex flex-column">
+                  <h3>Help the World Make Simple Decisions </h3>                  
+              </div>                        
+              <Questions
                     questionsUrl="http://localhost:5000/questions"
                     currentUserId="2"
-                  />
+              />
             </section>
             <hr className="m-0"></hr>                   
         </div>
-    </div>
-  );
+    );
 }
 
 export default Profile;

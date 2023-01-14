@@ -11,16 +11,14 @@ import QuestionAndPoll from '../../Components/Questions/QuestionAndPoll';
 function Main() {
   
   return (
-    <div className="App profile container">
-        <SideNav name="Luciana Bruscino" />
-        <div className="container-fluid p-0">
-            <section className="" >                              
+    <div className="App profile container-fluid">
+        <SideNav name="Luciana Bruscino" />       
+        <section className="m-0" >                                                    
                 <div id="question-form">
-                <QuestionAndPoll  />
-             </div>
-            </section>
-            <hr className="m-0"></hr>                   
-        </div>
+                  <QuestionAndPoll  />
+                </div>
+        </section>         
+        <hr className="m-0"></hr>                   
     </div>
   );
 }

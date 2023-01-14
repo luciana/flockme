@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Vote from '../Votes/Vote';
-import { FaCircleNotch , FaCircle, FaEdit, FaCut} from 'react-icons/fa';
+import { FaCircleNotch , FaCircle, FaEdit, FaCut, FaGrinHearts} from 'react-icons/fa';
 import { Tooltip } from 'bootstrap';
 import Avatar from 'react-avatar';
 import ReplyModalDialog from './ReplyModalDialog';
@@ -53,8 +53,14 @@ function Question({
   
 
   return (
-     <div key={question.id} className="my-5 container border border-2 p-3 d-flex  flex-column" >       
-        <div className="p-2 row align-items-start"> 
+    <div key={question.id} className="my-3">
+
+       <div className=" bg-light text-small lh-3">
+        <span className="p-3">You helped {question.username} <FaGrinHearts /></span>
+      </div>   
+        
+       <div key={question.id} className=" container border border-2 px-3 d-flex  flex-column" >           
+        <div className="p-3 row align-items-start"> 
             <div className="col-1"> <Avatar size="36" name="{question.name}" className="img-fluid img-profile rounded-circle mx-auto mb-0" alt="{question.name}" /></div>
             <div className="col-8">
               <div className="text-small lh-1"><span>{question.username} </span><span aria-hidden="true"> · </span> <span> {createdAt} </span></div>
@@ -124,6 +130,7 @@ function Question({
             ))}
           </div>
         )} */}
+      </div>
       </div>
   );
 }
