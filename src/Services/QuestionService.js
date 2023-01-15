@@ -1,16 +1,15 @@
-import axios from 'axios';
+import axiosInstance from './axios';
+
 import {
     createQuestion as createQuestionAPI,
     updateQuestion as updateQuestionAPI,
     deleteQuestion as deleteQuestionAPI,
   } from './api';
 
-const QUESTION_API_BASE_URL = "http://localhost:5000/questions";
-
  class QuestionService {
    
     getQuestions = () => {
-        return axios.get(QUESTION_API_BASE_URL + '/').then(res => {           
+        return axiosInstance.get('/').then(res => {           
             return res.data.success;
           }).catch(function (error) {
             if (error.response) {
@@ -35,21 +34,21 @@ const QUESTION_API_BASE_URL = "http://localhost:5000/questions";
     }
 
     createQuestion(question){
-       // return axios.post(QUESTION_API_BASE_URL, question);
+       // return axiosInstance.post(QUESTION_API_BASE_URL, question);
        return  createQuestionAPI(question);
     }
 
     getQuestionById(questionId){
-        //return axios.get(QUESTION_API_BASE_URL + '/' + QuestionId);
+        //return axiosInstance.get(QUESTION_API_BASE_URL + '/' + QuestionId);
     }
 
     updateQuestion(text, questionId){
-        //return axios.update(QUESTION_API_BASE_URL + '/' + questionId);       
+        //return axiosInstance.update(QUESTION_API_BASE_URL + '/' + questionId);       
         return updateQuestionAPI(questionId);
     }
 
     deleteQuestion(questionId){
-        //return axios.delete(QUESTION_API_BASE_URL + '/' + questionId);
+        //return axiosInstance.delete(QUESTION_API_BASE_URL + '/' + questionId);
         return deleteQuestionAPI();
     }
 }
