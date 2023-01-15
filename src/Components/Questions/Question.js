@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Vote from '../Votes/Vote';
-import { FaCircleNotch , FaCircle, FaEdit, FaCut, FaGrinHearts} from 'react-icons/fa';
+import { FaCircleNotch , FaCircle, FaTrashAlt, FaCut, FaGrinHearts} from 'react-icons/fa';
 import { Tooltip } from 'bootstrap';
 import Avatar from 'react-avatar';
 import ReplyModalDialog from './ReplyModalDialog';
@@ -53,13 +53,13 @@ function Question({
   
 
   return (
-    <div key={question.id} className="my-3">
+    <div key={question.id} className="my-5">
 
-       <div className=" bg-light text-small lh-3">
+       <div className="container border border-1 bg-light text-small lh-3">
         <span className="p-3">You helped {question.username} <FaGrinHearts /></span>
       </div>   
         
-       <div key={question.id} className=" container border border-2 px-3 d-flex  flex-column" >           
+       <div key={question.id} className="container border border-1 p-3 d-flex  flex-column" >           
         <div className="p-3 row align-items-start"> 
             <div className="col-1"> <Avatar size="36" name="{question.name}" className="img-fluid img-profile rounded-circle mx-auto mb-0" alt="{question.name}" /></div>
             <div className="col-8">
@@ -72,14 +72,10 @@ function Question({
               
             </div>
             <div className="col-3">
-              {canReply && (                
-                <button className="btn btn-sm btn-dark mx-1 "  data-bs-toggle="tooltip" data-bs-placement="top" title="What happend afterwards?" onClick={()=> setActiveQuestion({id: question.id, type:"replying"})}>
-                   <FaEdit alt="Enter What's the outcome of your story?" />
-                </button>
-              )}
+             
               {canDelete && (
-                <button className="btn btn-sm btn-warning mx-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Question" onClick={()=> deleteQuestion(question.id)}>
-                  <FaCut alt="Delete question" /></button>
+                <button className="btn btn-sm  mx-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Question" onClick={()=> deleteQuestion(question.id)}>
+                  <FaTrashAlt alt="Delete question" /></button>
               )}
             </div>
         </div>      
@@ -95,6 +91,11 @@ function Question({
                 <ReplyModalDialog text={replies}/>
              </div>
           )}
+           {canReply && (                
+                <button className="btn btn-outline-secondary rounded-pill "  data-bs-toggle="tooltip" data-bs-placement="top" title="What happend afterwards?" onClick={()=> setActiveQuestion({id: question.id, type:"replying"})}>
+                 Tell what happened afterwards
+                </button>
+              )}
           {isReplying && (
             <QuestionForm 
               submitLabel="This is what happened afterwards..."
