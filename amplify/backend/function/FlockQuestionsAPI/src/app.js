@@ -51,7 +51,8 @@ app.get('/questions', function(req, res) {
             "text": "No Jersey",
             "votes": 0
         }
-    ]
+    ],
+    "tag": "",
 },
 {
     "id": 2,
@@ -78,7 +79,8 @@ app.get('/questions', function(req, res) {
             "text": "Rower",
             "votes": 102
         }
-    ]
+    ],
+    "tag": "fitness",
 },
 {
     "id": 3,
@@ -103,6 +105,7 @@ app.get('/questions', function(req, res) {
     "voteEndAt": "2023-01-012T19:17:18.780Z",
     "sentiment": "Positive",
     "options": [],
+
 },
 {
     "id": 5,
@@ -129,7 +132,8 @@ app.get('/questions', function(req, res) {
             "text": "salad",
             "votes": 0
         },
-    ]
+    ],
+    "tag": "nutricionist"
 },
 {
     "id": 6,
@@ -151,7 +155,8 @@ app.get('/questions', function(req, res) {
             "text": "Walk",
             "votes": 0
         }
-    ]
+    ],
+    "tag": "trainer"
 },
 {
     "id": 7,
@@ -173,7 +178,8 @@ app.get('/questions', function(req, res) {
             "text": "Refund",
             "votes": 56
         }
-    ]
+    ],
+    "tag": "",
 },
 {
     id: 8,
@@ -188,28 +194,27 @@ app.get('/questions', function(req, res) {
     "options": [],
 },
 {
-  "id": 6630,
-  "text": "what should I have for lunch today ? #flocks brazilian food, mexican food",
-  "parentId": null,
-  "userId": 2,
-  "username": "Luciana",
-  "name": "Luciana Bruscino",
-  "createdAt": "2023-01-17T03:19:48.630Z",
-  "voteEndAt": "2023-01-17T03:29:48.630Z",
-  "sentiment": "Positive",
-  "options": [
-      {
-          "id": 5155,
-          "text": "brazilian food",
-          "votes": 0
-      },
-      {
-          "id": 5175,
-          "text": "mexican food",
-          "votes": 0
-      }
-  ],
-  "tag": "nutricionist"
+    "id": 6630,
+    "text": "what should I have for lunch today ? #flocks brazilian food, mexican food",
+    "parentId": null,
+    "userId": 2,
+    "username": "Luciana",
+    "name": "Luciana Bruscino",
+    "createdAt": "2023-01-17T03:19:48.630Z",
+    "voteEndAt": "2023-01-17T03:29:48.630Z",
+    "sentiment": "Positive",
+    "options": [{
+            "id": 5155,
+            "text": "brazilian food",
+            "votes": 0
+        },
+        {
+            "id": 5175,
+            "text": "mexican food",
+            "votes": 0
+        }
+    ],
+    "tag": "nutricionist",
 },
 ];
   
