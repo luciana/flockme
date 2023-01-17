@@ -1,10 +1,5 @@
 {
   "function": {
-    "ItemHandler": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
     "FlockQuestionsAPI": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -18,7 +13,7 @@
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "ItemHandler",
+          "resourceName": "FlockQuestionsAPI",
           "attributes": [
             "Name",
             "Arn"

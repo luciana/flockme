@@ -13,10 +13,6 @@
     },
     "categories": {
       "function": {
-        "ItemHandler": {
-          "deploymentBucketName": "amplify-flockme-dev-171359-deployment",
-          "s3Key": "amplify-builds/ItemHandler-6c56584771564446744d-build.zip"
-        },
         "FlockQuestionsAPI": {
           "deploymentBucketName": "amplify-flockme-dev-171359-deployment",
           "s3Key": "amplify-builds/FlockQuestionsAPI-726b42674e2f61367a51-build.zip"
