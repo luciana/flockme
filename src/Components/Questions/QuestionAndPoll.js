@@ -106,7 +106,6 @@ function QuestionAndPoll({
       const handleChange = e => {       
         console.log("onchange radio buttonj" ,e.currentTarget.value);
         setVotePeriod(e.currentTarget.value);
-
       }
       const handlePublishQuestion = e => {
         e.preventDefault();

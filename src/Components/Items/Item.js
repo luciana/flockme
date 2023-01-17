@@ -17,11 +17,13 @@ const Item = ({ todos, completeTodo, removeTodo, updateTodo }) => {
     });
   };
 
+  if (!todos) return;
+
   if (edit.id) {
     return <ItemForm edit={edit} onSubmit={submitUpdate} />;
   }
 
-  return todos.map((todo, index) => (
+ return todos.map((todo, index) => (
    <div key={index}>
     <div key={index} className={todo.isComplete ? 'todo-row complete' : 'todo-row'}>
       <div key={todo.id} onClick={() => completeTodo(todo.id)}>

@@ -19,22 +19,25 @@ const Vote = ({ question, handleVote }) => {
     };
 
   return items.map((item, index) => (
-    <div
-      className={item.isComplete ? 'todo-row complete' : 'todo-row'}
-      key={index}
-    >
-      <div key={item.id} onClick={() => voteUp(item.id)}>
-        <span className="badge rounded-pill bg-light text-dark mx-2 ">{item.votes}</span> 
-        {item.text}
-      </div>
-      <div className='icons'>
-         <span className=" mx-5 badge rounded-pill bg-light text-dark"  onClick={() => voteUp(item.id)}>
+    <div className={item.isComplete ? 'container px-4 todo-row complete' : 'container px-4 todo-row'} key={index} >
+
+        
+          <div className="row ">
             
-        <TiThumbsUp  />
-        </span>
-      
-      </div>
-    </div>
+              <div key={item.id} onClick={() => voteUp(item.id)} className="col p-3 border-bottom bg-light">
+                <span className="badge rounded-pill bg-light text-dark mx-2 ">{item.votes}</span> 
+                {item.text}
+              </div>
+            
+            <div className="col p-3 border-bottom bg-light">
+              <span className=" mx-5 badge rounded-pill bg-light text-dark"  onClick={() => voteUp(item.id)}>
+                <TiThumbsUp size={24}/>
+              </span>     
+            </div>
+          </div>
+          </div>
+         
+   
   ));
 };
 

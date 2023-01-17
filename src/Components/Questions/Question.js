@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Vote from '../Votes/Vote';
-import { FaCircleNotch , FaCircle, FaTrashAlt, FaCut, FaGrinHearts} from 'react-icons/fa';
+import { FaCircleNotch , FaCircle, FaTrashAlt, FaGrinHearts} from 'react-icons/fa';
 import { Tooltip } from 'bootstrap';
 import Avatar from 'react-avatar';
 import ReplyModalDialog from './ReplyModalDialog';
@@ -53,7 +53,7 @@ function Question({
   
 
   return (
-    <div key={question.id} className="my-5">
+    <div key={question.id} className="my-3">
 
        <div className="container border border-1 bg-light text-small lh-3">
         <span className="p-3">You helped {question.username} <FaGrinHearts /></span>

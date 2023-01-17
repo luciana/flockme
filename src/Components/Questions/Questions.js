@@ -3,7 +3,7 @@ import Question from "./Question";
 import QuestionService from '../../Services/QuestionService'
 import VoteService from '../../Services/VoteService'
 
-const Questions = ({questionURL, currentUserId}) => {
+const Questions = ({currentUserId}) => {
     const [backendQuestions, setBackendQuestions] = useState([]);
     const [activeQuestion, setActiveQuestion] = useState(null);
 
@@ -74,10 +74,8 @@ const Questions = ({questionURL, currentUserId}) => {
           });
       }
 
-      return (
-        <div className="container">
-          
-            <div id="all-questions">
+      return ( 
+            <div id="all-questions" className="white-bg container border border-2 p-3 d-flex flex-column">
                 {rootQuestions.map((rootQuestion) => (
                     <Question 
                         key={rootQuestion.id}
@@ -93,7 +91,7 @@ const Questions = ({questionURL, currentUserId}) => {
                     />
                 ))}
             </div>
-        </div>
+   
       );
 };
 
