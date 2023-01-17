@@ -6,21 +6,7 @@
       "service": "Lambda"
     }
   },
-  "api": {
-    "flockmeapi": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "FlockQuestionsAPI",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        }
-      ]
-    },
+  "api": {    
     "questions": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",

@@ -8,11 +8,6 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "api": {
-        "flockmeapi": {
-            "RootUrl": "string",
-            "ApiName": "string",
-            "ApiId": "string"
-        },
         "questions": {
             "RootUrl": "string",
             "ApiName": "string",
