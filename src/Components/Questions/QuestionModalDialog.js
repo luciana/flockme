@@ -4,6 +4,7 @@ import { RiTimeLine }  from 'react-icons/ri';
 import Avatar from 'react-avatar';
 import Item from '../Items/Item';
 import ItemForm from '../Items/ItemForm';
+import './Question.css';
 
 function QuestionModalDialog(
   {
@@ -80,7 +81,7 @@ function QuestionModalDialog(
             <div className="col-11 d-grid gap-2 py-3">
                 <div className="text-small lh-1"><span>Luciana </span><span aria-hidden="true"> · </span> <span> 1/6/2023 at 1:53 pm </span></div>                                                                   
             </div>  
-            <button type="button" className="btn btn-outline-secondary rounded-pill" onClick={initModal}> 
+            <button type="button" className="btn btn-outline-secondary rounded-pill btn-ouline-secondary-no-hover" onClick={initModal}> 
                       Enter your question 
             </button>    
       </div>

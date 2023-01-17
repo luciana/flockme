@@ -38,3 +38,11 @@ body {
 .App-link {
   color: #61dafb;
 }
+
+.btn-ouline-secondary-no-hover:hover {
+ background-color: #fff;
+ color: #6c757d;
+}
+
+
+

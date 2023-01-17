@@ -109,7 +109,7 @@ function QuestionAndPoll2({
     return(
         <>
         
-           <div className="white-bg container border border-2 p-3 d-flex flex-column">
+           <div className="white-bg container border border-2 p-2 d-flex flex-column">
               <QuestionModalDialog  
                   addPostOptionsFromQuestion={addPostOptionsFromQuestion}   
                   handlePublishQuestion={handlePublishQuestion}                 

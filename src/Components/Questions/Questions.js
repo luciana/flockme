@@ -75,7 +75,7 @@ const Questions = ({currentUserId}) => {
       }
 
       return ( 
-            <div id="all-questions" className="white-bg container border border-2 p-3 d-flex flex-column">
+            <div id="all-questions" className=" container border border-2 p-0 d-flex flex-column">
                 {rootQuestions.map((rootQuestion) => (
                     <Question 
                         key={rootQuestion.id}
