@@ -10,6 +10,8 @@ function Question({
   question, 
   replies,
   setActiveQuestion,
+  votedList,
+  votedOptionsList,
   activeQuestion,
   deleteQuestion,
   handleVote,
@@ -43,14 +45,10 @@ function Question({
   const createdAt = formatDateAndTime(question.createdAt);
   const replyId = parentId ? parentId : question.id;
   const voteEnded = new Date() - new Date(question.voteEndAt) > 1;
-  
-
   const isReplying =
     activeQuestion &&
     activeQuestion.id === question.id &&
     activeQuestion.type === "replying";
-
-  
 
   return (
     <div key={question.id} className="my-3">
@@ -84,7 +82,9 @@ function Question({
         </div>
         <div className="p-2">
           <Vote question={question} 
-                handleVote={handleVote} />    
+                handleVote={handleVote}
+                votedList={votedList}
+                votedOptionsList={votedOptionsList} />    
         </div>     
           {replies && replies.length > 0 && (             
              <div> 

@@ -4,7 +4,6 @@ import { RiTimeLine }  from 'react-icons/ri';
 import Avatar from 'react-avatar';
 import Item from '../Items/Item';
 import ItemForm from '../Items/ItemForm';
-import './Question.css';
 
 function QuestionModalDialog(
   {
@@ -13,6 +12,7 @@ function QuestionModalDialog(
   handleCancel,
   removeTodo,
   updateTodo,
+  completeTodo,
   todos,
   addTodo,
   hasCancelButton = true}
@@ -163,6 +163,7 @@ function QuestionModalDialog(
                 <Item
                     todos={todos}           
                     removeTodo={removeTodo}
+                    completeTodo={completeTodo}
                     updateTodo={updateTodo}
                   />
                   <ItemForm onSubmit={addTodo} />

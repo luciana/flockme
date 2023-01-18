@@ -53,6 +53,8 @@ function QuestionAndPoll2({
         setTodos(removedArr);
       };
 
+     
+
 
       const addPostOptionsFromQuestion = (question)  => {
         let v = question.text;
@@ -94,6 +96,7 @@ function QuestionAndPoll2({
           addTodo({
             id: Math.floor(Math.random() * 10000),
             text: index[i].trim(),
+            isComplete: true,
             votes: 0
           });
         }
@@ -115,7 +118,7 @@ function QuestionAndPoll2({
                   handlePublishQuestion={handlePublishQuestion}                 
                   addTodo={addTodo}              
                   updateTodo={updateTodo}
-                  removeTodo={removeTodo}      
+                  removeTodo={removeTodo}                   
                   todos={todos}
                 />
             </div>

@@ -221,7 +221,7 @@ app.get('/questions', function(req, res) {
   res.json({success: result, url: req.url});
 });
 
-
+//use oath to only return the questions that were voted by user
 app.get('/questions/votes', function(req, res){
 
   let votes = [{
@@ -231,6 +231,21 @@ app.get('/questions/votes', function(req, res){
     "questionId": 1,
     "createdAt": "2023-01-06T22:17:18.780Z",
   },
+  {
+    "id": 2,
+    "createdBbyUserId": 2,
+    "optionId": 2525,
+    "questionId": 5,
+    "createdAt": "2023-01-06T18:53:18.780Z",
+  },
+ ];
+
+  res.json({success: votes, url: req.url});
+});
+
+app.get('/questions/:id/votes', function(req, res){
+
+  let votes = [
   {
     "id": 2,
     "createdBbyUserId": 2,
@@ -263,7 +278,7 @@ app.post('/questions', function(req, res) {
   res.json({success: 'post call succeed!', url: req.url, body: req.body})
 });
 
-app.post('/questions/*', function(req, res) {
+app.post('/questions/:id/votes', function(req, res) {
   // Add your code here
   res.json({success: 'post call succeed!', url: req.url, body: req.body})
 });
@@ -277,7 +292,7 @@ app.put('/questions', function(req, res) {
   res.json({success: 'put call succeed!', url: req.url, body: req.body})
 });
 
-app.put('/questions/*', function(req, res) {
+app.put('/questions/:id/votes', function(req, res) {
   // Add your code here
   res.json({success: 'put call succeed!', url: req.url, body: req.body})
 });

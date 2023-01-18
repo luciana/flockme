@@ -3,10 +3,13 @@ import Question from "./Question";
 import QuestionService from '../../Services/QuestionService'
 import VoteService from '../../Services/VoteService'
 
+
+
 const Questions = ({currentUserId}) => {
     const [backendQuestions, setBackendQuestions] = useState([]);
     const [activeQuestion, setActiveQuestion] = useState(null);
-
+    const [votedList, setVotedList] = useState([]);
+    const [votedOptionsList, setVoteOptionsdList] = useState([]);
     const rootQuestions = backendQuestions.filter(
         (backendQuestion) => backendQuestion.parentId === null
     ).sort(
@@ -18,8 +21,20 @@ const Questions = ({currentUserId}) => {
         QuestionService.getQuestions().then((data) => {
           setBackendQuestions(data);
         });
-      }, []);
 
+        QuestionService.getQuestionsVotes().then((data) => {
+          console.log("Vote component call to getQuestionsVotes", data);
+          //setVotedList(data);
+          const newArray = [];            
+          for (let i = 0; i < data.length; i++) {
+            newArray.push(data[i].optionId);
+          }
+          setVoteOptionsdList(newArray);
+          setVotedList(data);
+
+         });
+        
+      }, []);
       const addQuestion = (text) => {
         console.log('addQuestion triggered from question and poll', text);
         QuestionService.createQuestion(text).then((question) => {         
@@ -35,6 +50,8 @@ const Questions = ({currentUserId}) => {
             (a, b) =>
             new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
         );}
+
+   
     
       const updateQuestion = (text, questionId) => {
         console.log("updateQuestion triggered", QuestionService.updateQuestion(text, questionId));
@@ -74,6 +91,7 @@ const Questions = ({currentUserId}) => {
           });
       }
 
+      console.log("votedList in QuestionS", votedList);
       return ( 
             <div id="all-questions" className=" container border border-2 p-0 d-flex flex-column">
                 {rootQuestions.map((rootQuestion) => (
@@ -83,6 +101,8 @@ const Questions = ({currentUserId}) => {
                         replies={getReplies(rootQuestion.id)}                        
                         setActiveQuestion={setActiveQuestion}
                         handleVote={handleVote}
+                        votedList={votedList}
+                        votedOptionsList={votedOptionsList}
                         addQuestion={addQuestion}
                         activeQuestion={activeQuestion}                       
                         deleteQuestion={deleteQuestion}
