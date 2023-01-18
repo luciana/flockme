@@ -59,7 +59,7 @@ function Question({
         
        <div key={question.id} className="container border border-1 p-3 d-flex  flex-column" >           
         <div className="p-3 row align-items-start"> 
-            <div className="col-1"> <Avatar size="36" name="{question.name}" className="img-fluid img-profile rounded-circle mx-auto mb-0" alt="{question.name}" /></div>
+            <div className="col-1"> <Avatar size="42" name={question.name} className=" img-profile rounded-circle mx-auto mb-0" alt="{question.name}" /></div>
             <div className="col-8">
               <div className="text-small lh-1"><span>{question.username} </span><span aria-hidden="true"> · </span> <span> {createdAt} </span></div>
               <div className="text-small">

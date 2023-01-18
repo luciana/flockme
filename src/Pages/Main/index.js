@@ -9,7 +9,7 @@ import Questions from '../../Components/Questions/Questions';
 function Main() {
   
   return (
-    <div className="App profile container container-fluid">
+    <div className="App profile ">
         <SideNav name="Luciana Bruscino" />    
         <div className="white-bg container border border-2 p-2 d-flex flex-column">
                   <h3>Help the World Make Simple Decisions </h3>                  

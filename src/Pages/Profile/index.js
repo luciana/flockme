@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Profile() {  
   return (
-    <div className="App profile container-fluid">
+    <div className="App profile">
         to be done
           
           <hr className="m-0"></hr>                   

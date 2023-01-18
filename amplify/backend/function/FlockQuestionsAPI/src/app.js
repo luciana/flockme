@@ -44,12 +44,12 @@ app.get('/questions', function(req, res) {
     "options": [{
             "id": 2759,
             "text": "Cavs Jersey",
-            "votes": 0
+            "votes": 39
         },
         {
             "id": 6193,
             "text": "No Jersey",
-            "votes": 0
+            "votes": 5
         }
     ],
     "tag": "",
@@ -120,12 +120,12 @@ app.get('/questions', function(req, res) {
     "options": [{
             "id": 292,
             "text": "pizza",
-            "votes": 0
+            "votes": 5
         },
         {
             "id": 2525,
             "text": "pasta",
-            "votes": 0
+            "votes": 11
         },
         {
             "id": 6608,

@@ -8,7 +8,7 @@ function SideNav({ name }) {
             <a className="navbar-brand js-scroll-trigger" href="#page-top">
                 <span className="d-block d-lg-none">{name} @ FlockMe</span>
                 <span className="d-none d-lg-block">
-                    <Avatar name="{name}" className="img-fluid img-profile rounded-circle mx-auto mb-2" alt="{name}" />
+                    <Avatar name={name} className=" img-profile rounded-circle mx-auto mb-2" alt={name} />
                 </span>               
             </a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
