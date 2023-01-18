@@ -132,8 +132,19 @@ function QuestionModalDialog(
                               name="expertTag" 
                               className="form-control lh-1" 
                               placeholder="i.e #designer"
+                              list="expertDatalistTagOptions"                             
                               value={expertTag}
                               onChange={handleChangeExpertTage} />
+                                <datalist id="expertDatalistTagOptions">
+                                  <option value="#nutricionist" />
+                                  <option value="#designer" />
+                                  <option value="#technologist" />
+                                  <option value="#cook" />
+                                  <option value="#mechanic" />
+                                  <option value="#teacher" />
+                                  <option value="#parents" />
+                                </datalist>
+
                       </div>         
                     </div>
                   </div>                                       
