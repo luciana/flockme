@@ -11,10 +11,11 @@ function Question({
   replies,
   setActiveQuestion,
   votedList,
+  updateVotedList,
   votedOptionsList,
+  handleVote,
   activeQuestion,
   deleteQuestion,
-  handleVote,
   addQuestion,
   parentId = null,
   currentUserId,
@@ -23,8 +24,11 @@ function Question({
   useEffect(() => {
     Array.from(document.querySelectorAll('button[data-bs-toggle="tooltip"]'))
     .forEach(tooltipNode => new Tooltip(tooltipNode))
-    });
+  
+  
+  });
 
+     
 
  if (!question) return;
  const formatDateAndTime = (date_input)  => {
@@ -50,12 +54,22 @@ function Question({
     activeQuestion.id === question.id &&
     activeQuestion.type === "replying";
 
+  let alreadyVotedForQuestionList = votedList.filter(
+    (vote) => vote.questionId === question.id
+  );
+
+  let alreadyVotedForQuestionListBool = alreadyVotedForQuestionList.length !== 0;
+ 
+
+
   return (
     <div key={question.id} className="my-3">
 
+      
+      { alreadyVotedForQuestionListBool && (       
        <div className="container border border-1 bg-light text-small lh-3">
         <span className="p-3">You helped {question.username} <FaGrinHearts /></span>
-      </div>   
+      </div>   )}
         
        <div key={question.id} className="container border border-1 p-3 d-flex  flex-column" >           
         <div className="p-3 row align-items-start"> 
@@ -82,9 +96,12 @@ function Question({
         </div>
         <div className="p-2">
           <Vote question={question} 
-                handleVote={handleVote}
-                votedList={votedList}
-                votedOptionsList={votedOptionsList} />    
+                handleVote={handleVote}   
+                votedList={votedList}       
+                updateVotedList={updateVotedList}     
+                votedOptionsList={votedOptionsList}
+                alreadyVotedForQuestionList={alreadyVotedForQuestionList}
+                voteEnded={voteEnded} />    
         </div>     
           {replies && replies.length > 0 && (             
              <div> 

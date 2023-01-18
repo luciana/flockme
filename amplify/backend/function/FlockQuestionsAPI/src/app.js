@@ -226,14 +226,14 @@ app.get('/questions/votes', function(req, res){
 
   let votes = [{
     "id": 1,
-    "createdBbyUserId": 2,   
+    "createdByUserId": 2,   
     "optionId": 6193,
     "questionId": 1,
     "createdAt": "2023-01-06T22:17:18.780Z",
   },
   {
     "id": 2,
-    "createdBbyUserId": 2,
+    "createdByUserId": 2,
     "optionId": 2525,
     "questionId": 5,
     "createdAt": "2023-01-06T18:53:18.780Z",
@@ -248,14 +248,14 @@ app.get('/questions/:id/votes', function(req, res){
   let votes = [
   {
     "id": 2,
-    "createdBbyUserId": 2,
+    "createdByUserId": 2,
     "optionId": 2525,
     "questionId": 5,
     "createdAt": "2023-01-06T18:53:18.780Z",
   },
   {
     "id": 3,
-    "createdBbyUserId": 3,
+    "createdByUserId": 3,
     "optionId": 2525,
     "questionId": 5,
     "createdAt": "2023-01-06T18:55:18.780Z",
@@ -264,10 +264,6 @@ app.get('/questions/:id/votes', function(req, res){
   res.json({success: votes, url: req.url});
 });
 
-app.get('/questions/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
-});
 
 /****************************
 * Example post method *

@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
 import Question from "./Question";
 import QuestionService from '../../Services/QuestionService'
-import VoteService from '../../Services/VoteService'
-
-
 
 const Questions = ({currentUserId}) => {
     const [backendQuestions, setBackendQuestions] = useState([]);
@@ -23,8 +20,7 @@ const Questions = ({currentUserId}) => {
         });
 
         QuestionService.getQuestionsVotes().then((data) => {
-          console.log("Vote component call to getQuestionsVotes", data);
-          //setVotedList(data);
+          console.log("Vote component call to getQuestionsVotes", data);        
           const newArray = [];            
           for (let i = 0; i < data.length; i++) {
             newArray.push(data[i].optionId);
@@ -42,6 +38,7 @@ const Questions = ({currentUserId}) => {
           setActiveQuestion(null);
         });
     };
+
 
     const getReplies = (questionId) =>{       
         return backendQuestions
@@ -77,9 +74,10 @@ const Questions = ({currentUserId}) => {
         }
       };
     
-      const handleVote =(question, id) =>{             
-        VoteService.createVote(currentUserId, question, id ).then( () => {
-            // console.log('update question record and create vote item');
+      const handleVote =(question, optionId) =>{             
+        QuestionService.updateQuestionVotes(question.id, optionId ).then( () => {
+          console.log('update question record and create/update new vote item');
+          //update votedList
             const updatedBackendQuestions = backendQuestions.map((backendQuestion) => {
                 if (backendQuestion.id === question.id) {
                   return { ...backendQuestion, body: question };
@@ -89,6 +87,14 @@ const Questions = ({currentUserId}) => {
             setBackendQuestions(updatedBackendQuestions);
             setActiveQuestion(null);
           });
+      }
+
+      const updateVotedList = (item) => {    
+        setVotedList(votedList => {           
+          const newArray = [...votedList];
+          newArray.push(item);
+          return newArray;
+        });
       }
 
       console.log("votedList in QuestionS", votedList);
@@ -101,6 +107,7 @@ const Questions = ({currentUserId}) => {
                         replies={getReplies(rootQuestion.id)}                        
                         setActiveQuestion={setActiveQuestion}
                         handleVote={handleVote}
+                        updateVotedList={updateVotedList}
                         votedList={votedList}
                         votedOptionsList={votedOptionsList}
                         addQuestion={addQuestion}
