@@ -16,10 +16,9 @@ function SideNav({ name }) {
                 <ul className="navbar-nav">
                     <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/">Home</a></li>                                                    
                     <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/Main">Questions</a></li>     
+                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/New">New Question</a></li>  
                     <hr />
-                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/Profile">Profile</a></li>  
-                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/Profile/#stats">Stats</a></li> 
-                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/Profile">Sign out</a></li>                
+                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/#">Logout</a></li>                
                 </ul>
             </div>
         </nav>

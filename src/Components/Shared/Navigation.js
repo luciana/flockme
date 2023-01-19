@@ -8,15 +8,15 @@ const Navigation = (props) => {
   
 
 const tabs = [{
-  route: "/main",
+  route: "/Main",
   icon: faHome,
   label: "Home"
 },{
-  route: "/stats",
+  route: "/New",
   icon: faPlus,
   label: "Question"
 },{
-  route: "/profile",
+  route: "/Profile",
   icon: faUserCircle,
   label: "Account"
 }]
@@ -39,8 +39,8 @@ const tabs = [{
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to="/profile" className="nav-link">
-                  Profile
+                <NavLink to="/#" className="nav-link">
+                  Logout
                 </NavLink>
               </NavItem>
             </Nav>
