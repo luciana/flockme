@@ -15,7 +15,7 @@ function Footer() {
                         <a className="social-link rounded-circle text-white" href="#!"><i className="icon-social-github"></i></a>
                     </li>
                 </ul>
-                <p className="text-muted small mb-0">Copyright &copy; Flock App @ 2023</p>
+                <p className="text-muted small mb-0">Copyright &copy; Flock App @ 2023 All Rights Reserved <a href="/terms">Terms of Use and Privacy Policy</a></p>
             </div>
         </footer>
       </>
