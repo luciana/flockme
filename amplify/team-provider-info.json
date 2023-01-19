@@ -17,6 +17,9 @@
           "deploymentBucketName": "amplify-flockme-dev-171359-deployment",
           "s3Key": "amplify-builds/FlockQuestionsAPI-5a32385445306c305338-build.zip"
         }
+      },
+      "auth": {
+        "flockme44261481": {}
       }
     }
   }
