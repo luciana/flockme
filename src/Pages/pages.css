@@ -49,4 +49,29 @@ body {
 
 }
 
+/* bottom navigation custom styling */
+.navbar {
+  border-bottom: solid 1px #EBEBEB;
+
+}
+.bottom-tab-nav {
+  border-top: solid 2px #EBEBEB;
+  background-color: #212529;
+}
+.top-tab-nav{
+  border-bottom: solid 2px #EBEBEB;
+  background-color: #212529;
+}
+.nav-link,
+.bottom-nav-link {
+  /*color: #55575b;*/
+  color: #dee2e6;
+}
+.bottom-nav-link.active {
+  color: #922c88;
+}
+.bottom-tab-label {
+  font-size: 12px;
+}
+
 

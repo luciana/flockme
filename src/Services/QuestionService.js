@@ -32,7 +32,7 @@ import {
           });
     }
 
-
+//use oath to only return the questions that were voted by user
     getQuestionsVotes = () =>{
       //http://localhost:5000/questions/votes
     // [{
@@ -48,14 +48,7 @@ import {
   //   "optionId": 2525,
   //   "questionId": 5,
   //   "createdAt": "2023-01-06T18:53:18.780Z",
-  // },
-  // {
-  //   "id": 3,
-  //   "createdBbyUserId": 3,
-  //   "optionId": 2525,
-  //   "questionId": 5,
-  //   "createdAt": "2023-01-06T18:55:18.780Z",
-  // }]
+  // },]
       return axiosInstance.get('/votes').then(res => {           
         return res.data.success;
       }).catch(function (error) {

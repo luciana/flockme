@@ -8,11 +8,19 @@ const Questions = ({currentUserId}) => {
     const [votedList, setVotedList] = useState([]);
     const [votedOptionsList, setVoteOptionsdList] = useState([]);
     const rootQuestions = backendQuestions.filter(
-        (backendQuestion) => backendQuestion.parentId === null
+        (backendQuestion) => ((backendQuestion.parentId === null) )
     ).sort(
       (a, b) =>
       new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
     )
+
+    // const rootOpenQuestions = backendQuestions.filter(
+    //   (backendQuestion) => ((backendQuestion.parentId === null) && 
+    //     (new Date().getTime() < new Date(backendQuestion.voteEndAt).getTime()))
+    //   ).sort(
+    //     (a, b) =>
+    //     new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+    //   )
 
     useEffect(() => {
         QuestionService.getQuestions().then((data) => {
@@ -31,6 +39,7 @@ const Questions = ({currentUserId}) => {
          });
         
       }, []);
+
       const addQuestion = (text) => {
         console.log('addQuestion triggered from question and poll', text);
         QuestionService.createQuestion(text).then((question) => {         
@@ -39,8 +48,7 @@ const Questions = ({currentUserId}) => {
         });
     };
 
-
-    const getReplies = (questionId) =>{       
+      const getReplies = (questionId) =>{       
         return backendQuestions
         .filter((backendQuestion) => backendQuestion.parentId === questionId)
         .sort(
@@ -97,8 +105,14 @@ const Questions = ({currentUserId}) => {
         });
       }
 
-      console.log("votedList in QuestionS", votedList);
       return ( 
+        <>
+            {votedList.length > 0 && (
+                <div className="container border border-2 p-0 d-flex flex-colum">
+                  <span className="text-small">You helped {votedList.length} decision{votedList.length > 1 ? 's' :''} be made.</span>
+                </div>
+            )}
+        
             <div id="all-questions" className=" container border border-2 p-0 d-flex flex-column">
                 {rootQuestions.map((rootQuestion) => (
                     <Question 
@@ -118,7 +132,7 @@ const Questions = ({currentUserId}) => {
                     />
                 ))}
             </div>
-   
+        </>
       );
 };
 
