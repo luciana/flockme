@@ -12,7 +12,7 @@ function Main() {
     <div className="App profile ">
         <SideNav name="Luciana Bruscino" />    
         <div className="white-bg container border border-2 p-2 d-flex flex-column">
-                  <h3>Help the World Make Simple Decisions </h3>                  
+                  <h3>Decisions made simple</h3>                  
         </div>   
                                                
                 

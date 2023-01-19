@@ -63,17 +63,17 @@ function Question({
 
 
   return (
-    <div key={question.id} className="my-3">
+    <div key={question.id} className="my-2">
 
       
       { alreadyVotedForQuestionListBool && (       
        <div className="container border border-1 bg-light text-small lh-3">
-        <span className="p-3">You helped {question.username} <FaGrinHearts /></span>
+        <span className="p-2">You helped {question.username} <FaGrinHearts /></span>
       </div>   )}
         
-       <div key={question.id} className="container border border-1 p-3 d-flex  flex-column" >           
-        <div className="p-3 row align-items-start"> 
-            <div className="col-1"> <Avatar size="42" name={question.name} className=" img-profile rounded-circle mx-auto mb-0" alt="{question.name}" /></div>
+       <div key={question.id} className="container border border-1 p-1 d-flex  flex-column" >           
+        <div className="p-2 row align-items-start"> 
+            <div className="col-2"> <Avatar size="42" name={question.name} className=" img-profile rounded-circle mx-auto mb-0" alt="{question.name}" /></div>
             <div className="col-8">
               <div className="text-small lh-1"><span>{question.username} </span><span aria-hidden="true"> · </span> <span> {createdAt} </span></div>
               <div className="text-small">
@@ -83,7 +83,7 @@ function Question({
               </div>
               
             </div>
-            <div className="col-3">
+            <div className="col-2">
              
               {canDelete && (
                 <button className="btn btn-sm  mx-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Question" onClick={()=> deleteQuestion(question.id)}>

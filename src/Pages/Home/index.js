@@ -1,6 +1,5 @@
 import React from 'react';
 import { Header, Footer } from '../../Components/Shared/index';
-import './home-nav.css';
 import '../pages.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 

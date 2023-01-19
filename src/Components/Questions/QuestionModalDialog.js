@@ -76,9 +76,9 @@ function QuestionModalDialog(
 
   return (
     <>
-      <div className="p-3 row align-items-start"> 
-            <div className="col-1 px-2 d-grid  "> <Avatar size="42" name="Luciana Bruscino" className=" img-profile rounded-circle mx-auto mb-0" alt="{Luciana Bruscino}" /></div>
-            <div className="col-11 d-grid  py-3">
+      <div className="p-2 row align-items-start"> 
+            <div className="col-2 px-1 d-grid  "> <Avatar size="42" name="Luciana Bruscino" className=" img-profile rounded-circle mx-auto mb-0" alt="{Luciana Bruscino}" /></div>
+            <div className="col-10 d-grid  py-3">
                 <div className="text-small lh-1"><span>Luciana </span><span aria-hidden="true"> · </span> <span> 1/6/2023 at 1:53 pm </span></div>                                                                   
             </div>  
             <button type="button" className="btn my-2 btn-outline-secondary rounded-pill btn-ouline-secondary-no-hover" onClick={initModal}> 
