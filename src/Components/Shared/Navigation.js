@@ -17,9 +17,9 @@ const tabs = [{
   icon: faPlus,
   label: "Question"
 },{
-  route: "/Main",
+  route: "/Profile",
   icon: faUserCircle,
-  label: "Logout"
+  label: "Account"
 }]
 
 const isLoggedIn = () =>{

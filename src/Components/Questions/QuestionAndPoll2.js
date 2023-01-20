@@ -67,8 +67,7 @@ function QuestionAndPoll2({
 
         //user has not entered the tag to automatically setup the poll
         if (found === -1) {
-          alert('Your question does not contain any #flocks. i.e Should I take a shower today #flocks yes, no');
-          return;
+          //TODO: #flocks not used
         }
 
 

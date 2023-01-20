@@ -19,6 +19,7 @@ const QuestionForm2 = ({
   // });
 
   const handleChange = e => {
+    
     setInput(e.target.value);
   };
 

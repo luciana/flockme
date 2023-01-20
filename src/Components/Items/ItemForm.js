@@ -22,42 +22,55 @@ function ItemForm(props) {
   };
 
   return (
+   
     <form onSubmit={handleSubmit} className='todo-form'>
       {props.edit ? (
         <>
+         <div class="input-group mb-3">
           <input
             placeholder='Update your item'
             value={input}
             onChange={handleChange}
             name='text'
             ref={inputRef}
-            className='todo-input edit'
+            className='form-control edit'
           />
-          <button onClick={handleSubmit} className='todo-button edit'>
+          <button onClick={handleSubmit} className='btn btn-outline-secondary edit'>
             Update
           </button>
+          </div>
         </>
       ) : (
         <>
         
       
+        
+        <div class="input-group mb-3">
           <input
-            placeholder='Type available answers'
+            placeholder='Type available options'
             value={input}
+            type="text"
             onChange={handleChange}
             name='text'
-            className='todo-input'
+            className='form-control'
             ref={inputRef}
-          />  
+            aria-label="Question's options"
+          /> 
+
+          <button onClick={handleSubmit} className='btn btn-outline-secondary' type="button">
+                  Add Option
+                  </button>  
+                  </div>
+
           
-          <button onClick={handleSubmit} className='todo-button'>
-           Add Option
-          </button>  
+          
+         
             
        </>
       )}
       
     </form>
+  
   );
 }
 

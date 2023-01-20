@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Question from "./Question";
 import QuestionService from '../../Services/QuestionService'
 
-const Questions = ({userToken}) => {
+const Questions = ({user}) => {
     const [backendQuestions, setBackendQuestions] = useState([]);
     const [activeQuestion, setActiveQuestion] = useState(null);
     const [votedList, setVotedList] = useState([]);
@@ -128,7 +128,7 @@ const Questions = ({userToken}) => {
                         activeQuestion={activeQuestion}                       
                         deleteQuestion={deleteQuestion}
                         updateQuestion={updateQuestion}                        
-                        userToken={userToken}
+                        user={user}
                     />
                 ))}
             </div>

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Vote from '../Votes/Vote';
-import { FaCircleNotch , FaCircle, FaTrashAlt, FaGrinHearts} from 'react-icons/fa';
+import { FaCircleNotch , FaCircle, FaTrashAlt, FaGrinHearts, FaPhoneVolume} from 'react-icons/fa';
 import { Tooltip } from 'bootstrap';
 import Avatar from 'react-avatar';
 import ReplyModalDialog from './ReplyModalDialog';
@@ -18,7 +18,8 @@ function Question({
   deleteQuestion,
   addQuestion,
   parentId = null,
-  currentUserId='2',
+  user,
+  currentUserId = '2'
  }) {
  
   useEffect(() => {
@@ -31,6 +32,7 @@ function Question({
      
 
  if (!question) return;
+ console.log("question", question);
  const formatDateAndTime = (date_input)  => {
   let date = new Date(date_input);
   var hours = date.getHours();
@@ -57,6 +59,8 @@ function Question({
   let alreadyVotedForQuestionList = votedList.filter(
     (vote) => vote.questionId === question.id
   );
+
+  const expertNeeded = question.tag && question.tag !== "" && !voteEnded;
 
   let alreadyVotedForQuestionListBool = alreadyVotedForQuestionList.length !== 0;
  
@@ -149,6 +153,10 @@ function Question({
           </div>
         )} */}
       </div>
+      { expertNeeded && (       
+       <div className="container border border-1 bg-light text-small lh-3">
+        <span className="p-2"><FaPhoneVolume /> Special call out for #<strong>{question.tag}</strong></span>
+      </div>   )}
       </div>
   );
 }

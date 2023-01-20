@@ -43,8 +43,8 @@ function QuestionAndPoll({
     
         //user has not entered the tag to automatically setup the poll
         if (found === -1 ){
-          alert('Your question does not contain any #flocks. i.e Should I take a shower today #flocks yes, no')
-          return;
+          
+          //TODO: #flocks not used.
         }
     
        
@@ -150,7 +150,7 @@ function QuestionAndPoll({
             <input type="radio" onChange={handleChange} className="form-check-input" id="480" name="votePeriod" value="480" checked={votePeriod === "480"} /><label className="form-check-label" htmlFor="480">8 hours</label>
           </div>
           <div>
-          <button onClick={handlePublishQuestion} className='btn btn-success btn-lg my-3'>
+          <button onClick={handlePublishQuestion} className='btn btn-primary btn-lg my-3'>
               Publish Question & Poll
           </button>
          </div>

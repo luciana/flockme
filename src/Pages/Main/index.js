@@ -5,15 +5,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '@aws-amplify/ui-react/styles.css';
 import SideNav from '../../Components/Shared/SideNav';
 import Questions from '../../Components/Questions/Questions';
-import { Amplify } from 'aws-amplify';
+//import { Amplify } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
-import awsExports from '../../aws-exports';
-import {useUser} from '../../Contexts/UserContext';
-Amplify.configure(awsExports);
+//import awsExports from '../../aws-exports';
+//import {useUser} from '../../Contexts/UserContext';
+//Amplify.configure(awsExports);
 
 function Main({ signOut, user }) {  
-  const {accessToken, idToken, refreshToken} = user.signInUserSession;
-  console.log("user from Main", user);
+  //const {accessToken, idToken, refreshToken} = user.signInUserSession;
+  //console.log("user from Main", user);
   return (
     <div className="App profile ">
         <SideNav 
@@ -24,7 +24,7 @@ function Main({ signOut, user }) {
         </div>               
         <hr className="m-0"></hr>       
         <Questions           
-            userToken= {accessToken}
+            user= {user}
         />            
     </div>
   );
@@ -32,5 +32,6 @@ function Main({ signOut, user }) {
 
 export default withAuthenticator(Main, {
   includeGreetings: true,
+  socialProviders: ['google', 'facebook']
 });
 

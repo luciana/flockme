@@ -1,6 +1,6 @@
 import React, {useState, useRef} from 'react'
 import { Modal } from 'react-bootstrap'
-import { RiTimeLine }  from 'react-icons/ri';
+import { RiTimeLine, RiMagicLine }  from 'react-icons/ri';
 import Avatar from 'react-avatar';
 import Item from '../Items/Item';
 import ItemForm from '../Items/ItemForm';
@@ -109,19 +109,21 @@ function QuestionModalDialog(
                         <label htmlFor="expertTag" className="col-form-label"><RiTimeLine size={24}/></label>
                       </div>
                       <div className="col-auto">
+                     
+
                         <div className="form-check form-check-inline">
-                            <input type="radio" onChange={handleChangeVotePeriod} className="form-check-input" id="10" name="votePeriod" value="10" checked={votePeriod === 10} /><label className="form-check-label text-small "  htmlFor="10">10 min</label>
+                            <input type="radio" onChange={handleChangeVotePeriod} disabled={false} className="form-check-input" id="10" name="votePeriod" value="10" defaultChecked={votePeriod === 10} /><label className="form-check-label text-small "  htmlFor="10">10 min</label>
                         </div>
                         <div className="form-check form-check-inline">
-                            <input type="radio" onChange={handleChangeVotePeriod} className="form-check-input" id="120" name="votePeriod" value="120" checked={votePeriod === 120}/><label className="form-check-label text-small " htmlFor="120">2 hours</label>
+                            <input type="radio" onChange={handleChangeVotePeriod} disabled={false} className="form-check-input" id="120" name="votePeriod" value="120" defaultChecked={votePeriod === 120}/><label className="form-check-label text-small " htmlFor="120">2 hours</label>
                         </div>
                         <div className="form-check form-check-inline">
-                          <input type="radio" onChange={handleChangeVotePeriod} className="form-check-input" id="480" name="votePeriod" value="480" checked={votePeriod === 480} /><label className="form-check-label text-small " htmlFor="480">8 hours</label>
+                          <input type="radio" onChange={handleChangeVotePeriod}  disabled={false} className="form-check-input" id="480" name="votePeriod" value="480" defaultChecked={votePeriod === 480} /><label className="form-check-label text-small " htmlFor="480">8 hours</label>
                         </div>
                       </div>             
                     </div>           
                   </div>
-                  <div>          
+                           
                     <div className="row g-3 align-items-center">
                       <div className="col-auto">
                         <label htmlFor="expertTag" className="col-form-label text-small " data-bs-toggle="tooltip" data-bs-placement="top" title=" an expert opinion will weigh more">Expert Tag</label>
@@ -143,11 +145,20 @@ function QuestionModalDialog(
                                   <option value="#mechanic" />
                                   <option value="#teacher" />
                                   <option value="#parents" />
+                                  <option value="#lawyer" />
+                                  <option value="#life_coach" />
+                                  <options value="#finance" />
                                 </datalist>
 
                       </div>         
                     </div>
-                  </div>                                       
+
+                    <div className="mt-5 alert alert-warning alert-dismissible fade show text-small" role="alert">
+                    <div className="alert-heading" ><RiMagicLine size={24} /><strong>Pro Tip!</strong></div>
+                      <div>Use #flocks to list out the options for your question. Using #flocks will auto populate the list of options for you! </div>
+                     <div className="fst-italic"> i.e Most fun vacation spot with kids. #flocks beach, mountains. </div>                  
+                    </div>
+                                                       
               </Modal.Body>
               <Modal.Footer>                                           
                   {hasCancelButton && (
@@ -159,7 +170,7 @@ function QuestionModalDialog(
                       Discard
                     </button>                    
                   )}         
-                  <button onClick={onSubmit} disabled={isTextareaEmpty} className='btn-md btn btn-success my-3'>
+                  <button onClick={onSubmit} disabled={isTextareaEmpty} className='btn-md btn btn-primary my-3'>
                     Next
                 </button>      
               </Modal.Footer>
@@ -180,7 +191,7 @@ function QuestionModalDialog(
                   <ItemForm onSubmit={addTodo} />
               </Modal.Body>
               <Modal.Footer>                           
-                <button onClick={handlePublishQuestion} className='btn btn-success btn-lg my-3'>
+                <button onClick={handlePublishQuestion} className='btn btn-primary btn-lg my-3'>
                   Publish Question & Poll
                  </button>
               </Modal.Footer>
