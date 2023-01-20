@@ -22,7 +22,6 @@ root.render(
 reportWebVitals();
 
 //Check if you are in localhost or production
-
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
 
@@ -40,32 +39,23 @@ const isLocalhost = Boolean(
 
 )
 
-const signInURI = awsExports.oauth.redirectSignIn.split(',')
-
-const signOutURI = awsExports.oauth.redirectSignOut.split(',')
+console.log("awsExports.oauth", awsExports.oauth);
+const signInURI = (awsExports.oauth.redirectSignIn).split(',');
+const signOutURI = (awsExports.oauth.redirectSignOut).split(',');
 
 if (isLocalhost) {
+  awsExports.oauth.redirectSignIn = signInURI[0];
+  awsExports.oauth.redirectSignOut = signOutURI[0];
 
-  awsExports.oauth.redirectSignIn = signInURI[0]
-
-  awsExports.oauth.redirectSignOut = signOutURI[0]
-
-} else if (window.location.hostname === "https://main.d1whc2kcol1syq.amplifyapp.com/"
-  // https://{env}.{appID}.amplifyapp.com/
-) {
-
-  awsExports.oauth.redirectSignIn = signInURI[1]
-
-  awsExports.oauth.redirectSignOut = signOutURI[1]
+} else if (window.location.hostname === "https://main.d1whc2kcol1syq.amplifyapp.com/") {
+  console.log('window.location hostname in amplifyapp.com');
+  awsExports.oauth.redirectSignIn = signInURI[1];
+  awsExports.oauth.redirectSignOut = signOutURI[1];
 
 } else {
 
   console.alert('This is not possible')
 
 }
-
-//Check if you are in localhost or production
-
-//Then Configure Resources
 
 Amplify.configure(awsExports)
