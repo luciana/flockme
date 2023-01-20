@@ -4,7 +4,7 @@ import Amplify from '@aws-amplify/core';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import awsExports from './aws-exports'
+import awsExports from './aws-exports';
 import { UserContextProvider } from './Contexts/UserContext'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -39,7 +39,9 @@ const isLocalhost = Boolean(
 
 )
 
+console.log("awsExports",awsExports);
 console.log("awsExports.oauth", awsExports.oauth);
+console.log("awsExports.oauth.redirectSignIn", awsExports.oauth.redirectSignIn);
 const signInURI = (awsExports.oauth.redirectSignIn).split(',');
 const signOutURI = (awsExports.oauth.redirectSignOut).split(',');
 
