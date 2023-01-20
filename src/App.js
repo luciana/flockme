@@ -13,27 +13,25 @@ import {
   import NewQuestionPage from './Pages/NewQuestion';
   import TermsPage from './Pages/Terms';
 
-  import { useContext } from 'react';
-  import { UserContext } from './Contexts/UserContext';
+   
   
   function App() {
-      const { user } = useContext(UserContext);
-      console.log("user from appjs", user);
+  
     return (     
-     
+    
       <Router>
-        <Navigation />
+        <Navigation/>
         <div>
           <Routes>           
             <Route path="/" exact element={<HomePage />} />
             <Route path="/Profile" exact element={<ProfilePage />} />
             <Route path="/Main" exact element={<MainPage />} />   
             <Route path="/New" exact element={<NewQuestionPage />} />    
-            <Route path="/Terms" exact element={<TermsPage />} />    
-             
+            <Route path="/Terms" exact element={<TermsPage />} />                 
           </Routes>
         </div>
       </Router>
+ 
     );
   }
   

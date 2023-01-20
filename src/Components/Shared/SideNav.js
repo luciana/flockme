@@ -1,16 +1,18 @@
 import React from 'react';
 import Avatar from 'react-avatar';
+import logo from'../../Assets/Images/logos/Flock-App-logos_white-small.png';
 
 function SideNav({ name, signOut }) {
   return(
       <>       
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="sideNav">
+       
             <a className="navbar-brand js-scroll-trigger" href="#page-top">
                 <span className="d-block d-lg-none">Flock App</span>
-                <span className="d-none d-lg-block">
+                <span className="d-none d-lg-block">    
+                    <p><img src={logo} className="img-fluid" alt="Flock App" /> </p>
                     <Avatar name={name} className=" img-profile rounded-circle mx-auto mb-2" alt={name} />
-                </span>   
-       
+                </span>          
             </a>
             <div className="text-white my-3">{name}</div>   
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">

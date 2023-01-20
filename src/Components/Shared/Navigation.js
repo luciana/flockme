@@ -3,10 +3,11 @@ import { Nav, NavItem} from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faHome, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { useUser } from '../../Contexts/UserContext';
 
-const Navigation = ({userId=null}) => {
-  
-
+const Navigation = () => {
+const {user} = useUser;  
+console.log("user from nav" , user);
 const tabs = [{
   route: "/Main",
   icon: faHome,
@@ -22,7 +23,7 @@ const tabs = [{
 }]
 
 const isLoggedIn = () =>{
-  return userId !== null;
+  return user !== null;
 }
 
 	return (

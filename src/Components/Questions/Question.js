@@ -18,7 +18,7 @@ function Question({
   deleteQuestion,
   addQuestion,
   parentId = null,
-  currentUserId,
+  currentUserId='2',
  }) {
  
   useEffect(() => {

@@ -4,10 +4,7 @@ import Amplify from '@aws-amplify/core';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-//import { Amplify } from 'aws-amplify'
 import awsExports from './aws-exports'
-
-//Context imports
 import { UserContextProvider } from './Contexts/UserContext'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

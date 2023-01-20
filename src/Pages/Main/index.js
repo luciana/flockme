@@ -8,11 +8,12 @@ import Questions from '../../Components/Questions/Questions';
 import { Amplify } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import awsExports from '../../aws-exports';
-
+import {useUser} from '../../Contexts/UserContext';
 Amplify.configure(awsExports);
 
-function Main({ signOut, user }) {
-  //console.log("user", user);
+function Main({ signOut, user }) {  
+  const {accessToken, idToken, refreshToken} = user.signInUserSession;
+  console.log("user from Main", user);
   return (
     <div className="App profile ">
         <SideNav 
@@ -23,11 +24,13 @@ function Main({ signOut, user }) {
         </div>               
         <hr className="m-0"></hr>       
         <Questions           
-            currentUserId="2"
+            userToken= {accessToken}
         />            
     </div>
   );
 }
 
-export default withAuthenticator(Main);
+export default withAuthenticator(Main, {
+  includeGreetings: true,
+});
 
