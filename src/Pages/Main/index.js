@@ -32,6 +32,5 @@ function Main({ signOut, user }) {
 
 export default withAuthenticator(Main, {
   includeGreetings: true,
-  socialProviders: ['google', 'facebook']
 });
 
