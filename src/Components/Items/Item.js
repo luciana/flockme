@@ -24,12 +24,12 @@ const Item = ({ todos, completeTodo, removeTodo, updateTodo }) => {
   }
 
  return todos.map((todo, index) => (
-   <div key={index}>
-    <div key={index} className={todo.isComplete ? 'todo-row complete' : 'todo-row'}>
-      <div key={todo.id} onClick={() => completeTodo(todo.id)}>
+   <div className="container" key={index}>
+    <div key={index} className='row todo-row'>
+      <div key={todo.id} className="col-7" >
         {todo.text}
       </div>
-      <div className='icons'>
+      <div className='col-5'>
         <RiCloseCircleLine
           onClick={() => removeTodo(todo.id)}
           className='delete-icon'

@@ -1,7 +1,7 @@
 import React from 'react';
 import Avatar from 'react-avatar';
 
-function SideNav({ name }) {
+function SideNav({ name, signOut }) {
   return(
       <>       
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="sideNav">
@@ -9,16 +9,20 @@ function SideNav({ name }) {
                 <span className="d-block d-lg-none">Flock App</span>
                 <span className="d-none d-lg-block">
                     <Avatar name={name} className=" img-profile rounded-circle mx-auto mb-2" alt={name} />
-                </span>               
+                </span>   
+       
             </a>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
+            <div className="text-white my-3">{name}</div>   
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+            </button>
             <div className="collapse navbar-collapse" id="navbarResponsive">
                 <ul className="navbar-nav">
                     <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/">Home</a></li>                                                    
                     <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/Main">Questions</a></li>     
                     <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/New">New Question</a></li>  
                     <hr />
-                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/#">Logout</a></li>                
+                    <li className="nav-item"><a className="nav-link js-scroll-trigger" href="/#" onClick={signOut}>Logout</a></li>                
                 </ul>
             </div>
         </nav>
