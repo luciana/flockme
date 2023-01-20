@@ -11,10 +11,7 @@ import {
   import MainPage from './Pages/Main';
   import ProfilePage from './Pages/Profile';
   import NewQuestionPage from './Pages/NewQuestion';
-  import TermsPage from './Pages/Terms';
-
-   
-  
+ 
   function App() {
   
     return (     
@@ -27,7 +24,7 @@ import {
             <Route path="/Profile" exact element={<ProfilePage />} />
             <Route path="/Main" exact element={<MainPage />} />   
             <Route path="/New" exact element={<NewQuestionPage />} />    
-            <Route path="/Terms" exact element={<TermsPage />} />                 
+                      
           </Routes>
         </div>
       </Router>
