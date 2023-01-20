@@ -13,9 +13,14 @@ import {
   import NewQuestionPage from './Pages/NewQuestion';
   import TermsPage from './Pages/Terms';
 
+  import { useContext } from 'react';
+  import { UserContext } from './Contexts/UserContext';
   
   function App() {
+      const { user } = useContext(UserContext);
+      console.log("user from appjs", user);
     return (     
+     
       <Router>
         <Navigation />
         <div>
